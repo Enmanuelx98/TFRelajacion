@@ -37,7 +37,7 @@ public class TipoMaterialController {
     //delete
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
-        tipoMaterialService.eliminarTipoMaterial(id);
+        tipomS.eliminarTipoMaterial(id);
     }
 
     //listar
