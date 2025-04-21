@@ -46,4 +46,13 @@ public class PlaylistController {
             return m.map(x, PlaylistDTO.class);
         }).collect(Collectors.toList());
     }
+    //buscar
+    @GetMapping("/busqueda")
+    public  List<PlaylistDTO> buscar(@RequestParam String nombre) {
+
+        return playlistServiceinter.find(nombre).stream().map(    x  -> {
+            ModelMapper m=new ModelMapper();
+            return  m.map(x,PlaylistDTO.class);
+        }).collect(Collectors.toList());
+    }
 }
