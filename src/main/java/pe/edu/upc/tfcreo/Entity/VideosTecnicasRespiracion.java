@@ -3,7 +3,7 @@ package pe.edu.upc.tfcreo.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "Videostecnicasrespiracion")
+@Table(name = "VideosTecnicasrespiracion")
 public class VideosTecnicasRespiracion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
