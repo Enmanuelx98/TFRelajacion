@@ -30,7 +30,7 @@ public class TipoMaterialController {
     public void editar(@RequestBody TipoMaterialDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TipoMaterial tipoMaterial = modelMapper.map(dto, TipoMaterial.class);
-        tipoMaterialService.updateTipoMaterial(tipoMaterial);
+        tipomS.updateTipoMaterial(tipoMaterial);
 
     }
 
