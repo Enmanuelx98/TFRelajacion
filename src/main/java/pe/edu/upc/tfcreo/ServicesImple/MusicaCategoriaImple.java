@@ -31,4 +31,11 @@ public class MusicaCategoriaImple implements MusicaCategoriaInterface {
     public List<MusicaCategoria> listarMusicaCategoria() {
         return musicaCategoriaRepository.findAll();
     }
+
+    @Override
+    public List<MusicaCategoria> find(String nombre) {
+        return musicaCategoriaRepository.BuscarPorNombre(nombre);
+    }
+
+    
 }
