@@ -8,4 +8,6 @@ public interface MusicaRelajacionInterface {
     public void updateMusicaRelax(MusicaRelajacion musicarelajacion);
     public void eliminarMusicaRelax(int id);
     public List<MusicaRelajacion> listarMusicaRelax();
+    public List<MusicaRelajacion> find(String nombre);
+
 }
