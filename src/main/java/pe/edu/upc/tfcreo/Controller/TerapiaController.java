@@ -42,7 +42,7 @@ public class TerapiaController {
     //listar
     @GetMapping
     public List<TerapiaDTO> List() {
-        return terapiaService.listarTerapia().stream().map(x -> {
+        return terapiaS.listarTerapia().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, TerapiaDTO.class);
         }).collect(Collectors.toList());
