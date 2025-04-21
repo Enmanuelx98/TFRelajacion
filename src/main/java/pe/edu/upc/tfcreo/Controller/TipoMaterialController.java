@@ -16,13 +16,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/tipomaterial")
 public class TipoMaterialController {
     @Autowired
-    private TipoMaterialServiceInterface tipoMaterialService;
+    private TipoMaterialServiceInterface tipomS;
     //insertar
     @PostMapping
     public void insertar(@RequestBody TipoMaterialDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TipoMaterial tipoMaterial = modelMapper.map(dto, TipoMaterial.class);
-        tipoMaterialService.insertarTipoMaterial(tipoMaterial);
+        tipomS.insertarTipoMaterial(tipoMaterial);
     }
 
     //modificar
