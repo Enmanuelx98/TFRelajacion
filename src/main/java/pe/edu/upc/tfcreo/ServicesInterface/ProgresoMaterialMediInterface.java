@@ -10,4 +10,6 @@ public interface ProgresoMaterialMediInterface {
     public void updateProgresoMaterialMedi(ProgresoMaterialMedi progresomaterialmedi);
     public void eliminarProgresoMaterialMedi(int id);
     public List<ProgresoMaterialMedi> listarProgresoMaterialMedi();
+    public List<ProgresoMaterialMedi> find(String nombre);
+
 }
