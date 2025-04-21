@@ -46,4 +46,14 @@ public class MusicaRelajacionController {
             return m.map(x, MusicaRelajacionDTO.class);
         }).collect(Collectors.toList());
     }
+     //buscar
+    @GetMapping("/busqueda")
+    public  List<MusicaRelajacionDTO> buscar(@RequestParam String nombre) {
+
+        return musicaRelajacionservice.find(nombre).stream().map(    x  -> {
+            ModelMapper m=new ModelMapper();
+            return  m.map(x,MusicaRelajacionDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }
