@@ -6,6 +6,6 @@ import pe.edu.upc.tfcreo.Entity.Playlist;
 @Repository
 public interface PlaylistRepository extends JpaRepository<Playlist, Integer> {
   @Query("Select a from MusicaRelajacion  a where a.nombreMusica like  %:n%")
-    public List<MusicaRelajacion> BuscarPorNombre(String n);
+    public List<Playlist> BuscarPorNombre(String n);
 
 }
