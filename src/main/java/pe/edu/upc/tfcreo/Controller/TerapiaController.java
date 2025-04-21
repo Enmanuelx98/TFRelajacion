@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/terapia")
 public class TerapiaController {
     @Autowired
-    private TerapiaServiceInterface terapiaService;
+    private TerapiaServiceInterface terapiaS;
     //insertar
     @PostMapping
     public void insertar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
-        terapiaService.insertarTerapia(terapia);
+        terapiaS.insertarTerapia(terapia);
     }
 
     //modificar
