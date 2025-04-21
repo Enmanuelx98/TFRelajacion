@@ -29,7 +29,7 @@ public class TerapiaController {
     public void editar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
-        terapiaService.updateTerapia(terapia);
+        terapiaS.updateTerapia(terapia);
 
     }
 
