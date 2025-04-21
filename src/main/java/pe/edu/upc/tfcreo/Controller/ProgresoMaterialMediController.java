@@ -47,4 +47,13 @@ public class ProgresoMaterialMediController {
             return m.map(x, ProgresoMaterialMediDTO.class);
         }).collect(Collectors.toList());
     }
+    //buscar
+    @GetMapping("/busqueda")
+    public  List<ProgresoMaterialMediDTO> buscar(@RequestParam String nombre) {
+
+        return progresoMaterialMediInterface.find(nombre).stream().map(    x  -> {
+            ModelMapper m=new ModelMapper();
+            return  m.map(x,ProgresoMaterialMediDTO.class);
+        }).collect(Collectors.toList());
+    }
 }
