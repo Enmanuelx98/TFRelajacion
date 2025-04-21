@@ -47,3 +47,4 @@ public class TecMeditacionController {
         }).collect(Collectors.toList());
     }
 }
+
