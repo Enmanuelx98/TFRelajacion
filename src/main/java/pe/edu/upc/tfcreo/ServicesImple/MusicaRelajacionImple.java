@@ -31,4 +31,9 @@ public class MusicaRelajacionImple implements MusicaRelajacionInterface  {
     public List<MusicaRelajacion> listarMusicaRelax() {
         return musicaRelajacionRepository.findAll();
     }
+    
+    @Override
+    public List<MusicaRelajacion> find(String nombre) {
+        return musicaRelajacionRepository.BuscarPorNombre(nombre);
+    }
 }
