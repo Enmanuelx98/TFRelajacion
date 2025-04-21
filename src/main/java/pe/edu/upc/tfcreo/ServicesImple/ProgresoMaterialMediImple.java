@@ -31,4 +31,8 @@ public class ProgresoMaterialMediImple implements ProgresoMaterialMediInterface 
     public List<ProgresoMaterialMedi> listarProgresoMaterialMedi() {
         return progresoMaterialMediRepository.findAll();
     }
+    @Override
+    public List<ProgresoMaterialMedi> find(String nombre) {
+        return progresoMaterialMediRepository.BuscarPorNombre(nombre);
+    }
 }
