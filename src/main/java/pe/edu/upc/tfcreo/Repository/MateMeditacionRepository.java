@@ -6,4 +6,6 @@ import pe.edu.upc.tfcreo.Entity.MaterialMeditacion;
 
 @Repository
 public interface MateMeditacionRepository extends JpaRepository<MaterialMeditacion, Integer> {
+      @Query("Select a from MaterialMeditacion  a where a.nombreMaterialMeditacion like  %:n%")
+    public List<MaterialMeditacion> BuscarPorNombre(String n);
 }
