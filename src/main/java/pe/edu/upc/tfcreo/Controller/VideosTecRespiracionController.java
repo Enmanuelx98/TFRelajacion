@@ -15,14 +15,14 @@ import java.util.stream.Collectors;
 @RequestMapping("/VideosTecRespiracion")
 public class VideosTecRespiracionController {
     @Autowired
-    private VideosTecRespiracionInterface videosTecRespiracionservice;
+    private VideosTecRespiracionInterface videostrS;
 
     //insertar
     @PostMapping
     public void insertar(@RequestBody VideosTecnicasRespiracionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         VideosTecnicasRespiracion videostecnicasrespiracion = modelMapper.map(dto, VideosTecnicasRespiracion.class);
-        videosTecRespiracionservice.insertarVideosTecRespiracion(videostecnicasrespiracion);
+        videostrS.insertarVideosTecRespiracion(videostecnicasrespiracion);
     }
 
     //modificar
@@ -30,20 +30,20 @@ public class VideosTecRespiracionController {
     public void editar(@RequestBody VideosTecnicasRespiracionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         VideosTecnicasRespiracion videostecnicasrespiracion = modelMapper.map(dto, VideosTecnicasRespiracion.class);
-        videosTecRespiracionservice.updateVideosTecRespiracion(videostecnicasrespiracion);
+        videostrS.updateVideosTecRespiracion(videostecnicasrespiracion);
 
     }
 
     //delete
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
-        videosTecRespiracionservice.eliminarVideosTecRespiracion(id);
+        videostrS.eliminarVideosTecRespiracion(id);
     }
 
     //listar
     @GetMapping
     public List<VideosTecnicasRespiracionDTO> List() {
-        return videosTecRespiracionservice.listarVideosTecRespiracion().stream().map(x -> {
+        return videostrS.listarVideosTecRespiracion().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, VideosTecnicasRespiracionDTO.class);
         }).collect(Collectors.toList());
