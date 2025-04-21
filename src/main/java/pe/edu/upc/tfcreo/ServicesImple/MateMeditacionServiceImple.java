@@ -30,4 +30,9 @@ public class MateMeditacionServiceImple implements MateMeditacionServiceInterfac
     public List<MaterialMeditacion> listarMateMeditacion() {
         return mateMeditacionRepository.findAll();
     }
+    
+    @Override
+    public List<MaterialMeditacion> find(String nombre) {
+        return mateMeditacionRepository.BuscarPorNombre(nombre);
+    }
 }
