@@ -46,4 +46,14 @@ public class MateMeditacionController {
             return m.map(x, MaterialMeditacionDTO.class);
         }).collect(Collectors.toList());
     }
+    
+    @GetMapping("/busqueda")
+    public  List<MaterialMeditacionDTO> buscar(@RequestParam String nombre) {
+
+        return mateMeditacionService.find(nombre).stream().map(    x  -> {
+            ModelMapper m=new ModelMapper();
+            return  m.map(x,MaterialMeditacionDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }
