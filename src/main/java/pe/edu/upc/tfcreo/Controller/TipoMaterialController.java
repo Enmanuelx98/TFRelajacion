@@ -43,7 +43,7 @@ public class TipoMaterialController {
     //listar
     @GetMapping
     public List<TipoMaterialDTO> List() {
-        return tipoMaterialService.listarTipoMaterial().stream().map(x -> {
+        return tipomS.listarTipoMaterial().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, TipoMaterialDTO.class);
         }).collect(Collectors.toList());
