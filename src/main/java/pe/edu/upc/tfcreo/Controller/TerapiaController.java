@@ -36,7 +36,7 @@ public class TerapiaController {
     //delete
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
-        terapiaService.eliminarTerapia(id);
+        terapiaS.eliminarTerapia(id);
     }
 
     //listar
