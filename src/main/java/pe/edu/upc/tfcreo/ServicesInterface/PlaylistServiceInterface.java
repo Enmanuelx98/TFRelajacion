@@ -9,4 +9,6 @@ public interface PlaylistServiceInterface {
     public void updatePlaylist(Playlist playlist);
     public void eliminarPlaylist(int id);
     public List<Playlist> listarPlaylist();
+    public List<Playlist> find(String nombre);
+
 }
