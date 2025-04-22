@@ -10,3 +10,4 @@ public interface TecMeditacionServiceInterface {
     public void eliminarTecMeditacion(int id);
     public List<TecnicaMeditacion> listarTecMeditacion();
 }
+
