@@ -31,3 +31,4 @@ public class TipoMaterialServiceImple implements TipoMaterialServiceInterface {
         return tipoMaterialRepository.findAll();
     }
 }
+
