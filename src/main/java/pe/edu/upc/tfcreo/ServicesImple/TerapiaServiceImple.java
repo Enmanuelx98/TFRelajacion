@@ -32,3 +32,4 @@ public class TerapiaServiceImple implements TerapiaServiceInterface {
         return terapiaRepository.findAll();
     }
 }
+
