@@ -10,3 +10,4 @@ public interface TerapiaServiceInterface {
     public void eliminarTerapia(int id);
     public List<Terapia> listarTerapia();
 }
+
