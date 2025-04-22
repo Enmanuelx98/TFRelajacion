@@ -31,3 +31,4 @@ public class TecMeditacionServiceImple implements TecMeditacionServiceInterface 
         return tecMeditacionRepository.findAll();
     }
 }
+
