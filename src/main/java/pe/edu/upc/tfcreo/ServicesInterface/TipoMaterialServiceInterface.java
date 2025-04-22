@@ -10,3 +10,4 @@ public interface TipoMaterialServiceInterface {
     public void eliminarTipoMaterial(int id);
     public List<TipoMaterial> listarTipoMaterial();
 }
+
