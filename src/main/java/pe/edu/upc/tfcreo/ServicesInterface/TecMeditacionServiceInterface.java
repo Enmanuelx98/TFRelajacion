@@ -9,5 +9,8 @@ public interface TecMeditacionServiceInterface {
     public void updateTecMeditacion(TecnicaMeditacion tecnicameditacion);
     public void eliminarTecMeditacion(int id);
     public List<TecnicaMeditacion> listarTecMeditacion();
+    public List<String[]> tecnicaMeditacionPorTipoTerapia();
+    public List<String[]> cantidadTecnicasMeditacionPorTipoTerapia();
 }
+
 
