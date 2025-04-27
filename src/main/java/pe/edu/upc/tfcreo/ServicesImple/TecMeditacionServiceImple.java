@@ -30,5 +30,16 @@ public class TecMeditacionServiceImple implements TecMeditacionServiceInterface 
     public List<TecnicaMeditacion> listarTecMeditacion() {
         return tecMeditacionRepository.findAll();
     }
+
+    @Override
+    public List<String[]> tecnicaMeditacionPorTipoTerapia() {
+        return tecMeditacionRepository.tecnicaMeditacionPorTipoTerapia();
+    }
+
+    @Override
+    public List<String[]> cantidadTecnicasMeditacionPorTipoTerapia() {
+        return tecMeditacionRepository.cantidadTecnicasMeditacionPorTipoTerapia();
+    }
 }
+
 
