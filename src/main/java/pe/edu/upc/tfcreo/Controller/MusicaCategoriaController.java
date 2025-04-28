@@ -45,4 +45,16 @@ public class MusicaCategoriaController {
             return m.map(x, MusicaCategoriaDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @GetMapping("/lista-ordenada")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<MusicaCategoriaDTO> listarcategoriasordenadas() {
+        return musicaCategoriaservice.ListarCategoriaOrdenadas().stream().map(x->{
+            ModelMapper m = new ModelMapper();
+            return m.map(x, MusicaCategoriaDTO.class);
+
+        }).collect(Collectors.toList());
+    }
+
+    
 }
