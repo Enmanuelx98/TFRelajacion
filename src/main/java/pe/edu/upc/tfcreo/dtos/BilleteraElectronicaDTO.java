@@ -1,36 +1,20 @@
-package pe.edu.upc.tfcreo.entities;
+package pe.edu.upc.tfcreo.dtos;
 
-import jakarta.persistence.*;
 
-@Entity
-@Table(name = "billeteraElectronicas")
-public class BilleteraElectronica {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+import pe.edu.upc.tfcreo.entities.Pagos;
+
+public class BilleteraElectronicaDTO {
+
     private int idBilleteraElectronica;
 
-    @Column(name = "companiaBilleteraElectronica", length = 50, nullable = false)
     private String companiaBilleteraElectronica;
-    @Column(name = "nombreTitularBilleteraElectronica", length = 100, nullable = false)
+
     private String nombreTitularBilleteraElectronica;
-    @Column(name = "evidenciaBilleteraElectronica", length = 200, nullable = false)
+
     private String evidenciaBilleteraElectronica;
 
-    @ManyToOne
-    @JoinColumn(name = "idPagos")
     private Pagos pagos;
 
-
-    public BilleteraElectronica() {
-    }
-
-    public BilleteraElectronica(int idBilleteraElectronica, String companiaBilleteraElectronica, String nombreTitularBilleteraElectronica, String evidenciaBilleteraElectronica, Pagos pagos) {
-        this.idBilleteraElectronica = idBilleteraElectronica;
-        this.companiaBilleteraElectronica = companiaBilleteraElectronica;
-        this.nombreTitularBilleteraElectronica = nombreTitularBilleteraElectronica;
-        this.evidenciaBilleteraElectronica = evidenciaBilleteraElectronica;
-        this.pagos = pagos;
-    }
 
     public int getIdBilleteraElectronica() {
         return idBilleteraElectronica;
