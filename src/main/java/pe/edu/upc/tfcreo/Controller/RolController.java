@@ -17,7 +17,7 @@ public class RolController {
     private RolSeriveInterface rolSerive;
 
     //insertar
-    @PostMapping
+    @PostMapping("/insertarrol")
     public void insertar(@RequestBody RoleDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Role role = modelMapper.map(dto, Role.class);

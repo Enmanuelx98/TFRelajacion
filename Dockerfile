@@ -1,13 +1,9 @@
 # the base image
-FROM openjdk:17.0.2-jdk-oracle
-
-# the JAR file path
-ARG JAR_FILE=target/*.jar
+FROM amazoncorretto:17-alpine-jdk
 
 # Copy the JAR file from the build context into the Docker image
-COPY ${JAR_FILE} backend.jar
 
-CMD apt-get update -y
+COPY /target/backend.jar /api-v1.jar
 
 # Set the default command to run the Java application
-ENTRYPOINT ["java", "-Xmx2048M", "-jar", "/backend.jar"]
+ENTRYPOINT ["java", "-jar", "/api-v1.jar"]

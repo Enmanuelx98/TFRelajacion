@@ -16,7 +16,7 @@ public class UsuarioController {
     @Autowired
     private UsuarioServiceInterface usuarioService;
     //insertar
-    @PostMapping
+    @PostMapping("/insertarusuario")
     public void insertar(@RequestBody UsersDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Users users = modelMapper.map(dto, Users.class);
