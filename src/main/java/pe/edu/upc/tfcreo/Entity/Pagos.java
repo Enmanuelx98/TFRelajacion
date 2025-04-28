@@ -19,25 +19,22 @@ public class Pagos {
     @Column(name = "fechaPago", nullable = false)
     private LocalDate fechaPago;
 
+    @Column(name = "montoPagos")
+    private double montoPagos;
+
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private Users users;
+    private Usuario usuario;
 
-    public Pagos() {}
+    public Pagos() {
+    }
 
-    public Pagos(LocalDate fechaPago, int idPagos, String tipoPago, Users users) {
-        this.fechaPago = fechaPago;
+    public Pagos(int idPagos, String tipoPago, LocalDate fechaPago, double montoPagos, Usuario usuario) {
         this.idPagos = idPagos;
         this.tipoPago = tipoPago;
-        this.users = users;
-    }
-
-    public LocalDate getFechaPago() {
-        return fechaPago;
-    }
-
-    public void setFechaPago(LocalDate fechaPago) {
         this.fechaPago = fechaPago;
+        this.montoPagos = montoPagos;
+        this.usuario = usuario;
     }
 
     public int getIdPagos() {
@@ -56,11 +53,27 @@ public class Pagos {
         this.tipoPago = tipoPago;
     }
 
-    public Users getUsuario() {
-        return users;
+    public LocalDate getFechaPago() {
+        return fechaPago;
     }
 
-    public void setUsuario(Users users) {
-        this.users = users;
+    public void setFechaPago(LocalDate fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
+    public double getMontoPagos() {
+        return montoPagos;
+    }
+
+    public void setMontoPagos(double montoPagos) {
+        this.montoPagos = montoPagos;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }
