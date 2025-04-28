@@ -43,7 +43,7 @@ public class UsuarioController {
     }
 
     //listar
-    @GetMapping
+    @GetMapping(produces = "application/json")
     @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<UsersDTO> List() {
         return usuarioService.listarUsuario().stream().map(x -> {

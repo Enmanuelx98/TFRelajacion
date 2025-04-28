@@ -1,4 +1,5 @@
 pe\edu\upc\tfcreo\ServicesImple\MusicaCategoriaImple.class
+pe\edu\upc\tfcreo\Config\SwaggerConfig.class
 pe\edu\upc\tfcreo\Controller\TarjetaController.class
 pe\edu\upc\tfcreo\Repository\SesionTerapiaRepository.class
 pe\edu\upc\tfcreo\Repository\MembresiaRepository.class
