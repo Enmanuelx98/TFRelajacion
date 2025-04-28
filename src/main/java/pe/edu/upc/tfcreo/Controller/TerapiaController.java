@@ -48,3 +48,4 @@ public class TerapiaController {
         }).collect(Collectors.toList());
     }
 }
+
