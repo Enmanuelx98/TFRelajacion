@@ -3,7 +3,7 @@ package pe.edu.upc.tfcreo.Controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.tfcreo.Dtos.UsuarioDTO;
+import pe.edu.upc.tfcreo.Dtos.UsersDTO;
 import pe.edu.upc.tfcreo.Entity.Users;
 import pe.edu.upc.tfcreo.ServicesInterface.UsuarioServiceInterface;
 
@@ -17,7 +17,7 @@ public class UsuarioController {
     private UsuarioServiceInterface usuarioService;
     //insertar
     @PostMapping
-    public void insertar(@RequestBody UsuarioDTO dto) {
+    public void insertar(@RequestBody UsersDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Users users = modelMapper.map(dto, Users.class);
         usuarioService.insertarUsuario(users);
@@ -25,7 +25,7 @@ public class UsuarioController {
 
     //modificar
     @PutMapping
-    public void editar(@RequestBody UsuarioDTO dto) {
+    public void editar(@RequestBody UsersDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Users users = modelMapper.map(dto, Users.class);
         usuarioService.updateUsuario(users);
@@ -40,10 +40,10 @@ public class UsuarioController {
 
     //listar
     @GetMapping
-    public List<UsuarioDTO> List() {
+    public List<UsersDTO> List() {
         return usuarioService.listarUsuario().stream().map(x -> {
             ModelMapper m = new ModelMapper();
-            return m.map(x, UsuarioDTO.class);
+            return m.map(x, UsersDTO.class);
         }).collect(Collectors.toList());
     }
 }
