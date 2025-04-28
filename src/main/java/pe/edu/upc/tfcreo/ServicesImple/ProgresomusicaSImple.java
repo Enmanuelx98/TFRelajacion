@@ -32,19 +32,5 @@ public class ProgresomusicaSImple implements ProgresomusicaSInterface {
         return progresomusicaSRepository.findAll();
     }
 
-    @Override
-    public double calcularPorcentajeProgreso(int idSesion) {
-        List<ProgresomusicaS> totalVideos = progresomusicaSRepository.countMusicaBySesion(idSesion);
-        List<ProgresomusicaS> videosCompletados = progresomusicaSRepository.quantityMusicaCompletoBySesion(idSesion);
-
-        if (totalVideos.isEmpty()) { //si es true es porque no tiene elementos osea 0
-            return 0.0;
-        }
-        return (videosCompletados.size() * 100.0) / totalVideos.size();
-    }
-
-    @Override
-    public List<ProgresomusicaS> quantityMusicaCompletoBySesion(int idSesion) {
-        return progresomusicaSRepository.quantityMusicaCompletoBySesion(idSesion);
-    }
+    
 }
