@@ -6,4 +6,7 @@ import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
 
 @Repository
 public interface MusicaCategoriaRepository extends JpaRepository<MusicaCategoria, Integer> {
+  @Query("SELECT m FROM MusicaCategoria m ORDER BY m.nombreCategoria ASC")
+  List<MusicaCategoria> ListarCategoriaOrdenadas();
+
 }

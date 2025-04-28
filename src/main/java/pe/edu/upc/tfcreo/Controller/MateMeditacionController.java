@@ -52,4 +52,16 @@ public class MateMeditacionController {
             return m.map(x, MaterialMeditacionDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @GetMapping("/buscar-por-nombre/{nombre}")
+    @PreAuthorize("hasAnyAuthority('ADMIN', 'PREMIUN', 'FREE')")
+    public List<MaterialMeditacionDTO> buscarMaterialPorNombre(@PathVariable("nombre") String nombre) {
+        return mateMeditacionService.buscarmaterialnombre(nombre).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, MaterialMeditacionDTO.class);
+        }).collect(Collectors.toList());
+
+    }
+
+    
 }

@@ -9,4 +9,6 @@ public interface MateMeditacionServiceInterface {
     public void updateMateMeditacion(MaterialMeditacion materialmeditacion);
     public void eliminarMateMeditacion(int id);
     public List<MaterialMeditacion> listarMateMeditacion();
+    List<MaterialMeditacion> buscarmaterialnombre(String nombre);
+
 }
