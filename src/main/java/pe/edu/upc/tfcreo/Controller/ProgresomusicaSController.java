@@ -49,22 +49,5 @@ public class ProgresomusicaSController {
         }).collect(Collectors.toList());
     }
 
-    //Porcentaje de progreso
-    @GetMapping("/progreso/{id}")
-    public PorcentajeDTO obtenerProgresoMusicaDTO(@PathVariable int id) {
-        double porcentaje = progresomusicaSInterface.calcularPorcentajeProgreso(id);
-
-        PorcentajeDTO porcentajeDTO = new PorcentajeDTO(id, porcentaje);
-
-        return porcentajeDTO;
-    }
-
-    //Lista de musica completados
-    @GetMapping("/musicacompleta/{id}")
-    public List<ProgresomusicaSDTO> ListMusicaCompleto(@PathVariable int id) {
-        return progresomusicaSInterface.quantityMusicaCompletoBySesion(id).stream().map(x -> {
-            ModelMapper m = new ModelMapper();
-            return m.map(x, ProgresomusicaSDTO.class);
-        }).collect(Collectors.toList());
-    }
+   
 }
