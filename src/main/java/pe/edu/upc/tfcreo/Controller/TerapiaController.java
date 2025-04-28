@@ -15,13 +15,13 @@ import java.util.stream.Collectors;
 @RequestMapping("/terapia")
 public class TerapiaController {
     @Autowired
-    private TerapiaServiceInterface terapiaService;
+    private TerapiaServiceInterface terapiaS;
     //insertar
     @PostMapping
     public void insertar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
-        terapiaService.insertarTerapia(terapia);
+        terapiaS.insertarTerapia(terapia);
     }
 
     //modificar
@@ -29,20 +29,20 @@ public class TerapiaController {
     public void editar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
-        terapiaService.updateTerapia(terapia);
+        terapiaS.updateTerapia(terapia);
 
     }
 
     //delete
     @DeleteMapping("/{id}")
     public void eliminar(@PathVariable("id") int id) {
-        terapiaService.eliminarTerapia(id);
+        terapiaS.eliminarTerapia(id);
     }
 
     //listar
     @GetMapping
     public List<TerapiaDTO> List() {
-        return terapiaService.listarTerapia().stream().map(x -> {
+        return terapiaS.listarTerapia().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, TerapiaDTO.class);
         }).collect(Collectors.toList());

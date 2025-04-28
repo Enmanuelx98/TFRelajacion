@@ -3,7 +3,7 @@ package pe.edu.upc.tfcreo.Entity;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TipoMaterial")
+@Table(name = "Tipomaterial")
 public class TipoMaterial {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
