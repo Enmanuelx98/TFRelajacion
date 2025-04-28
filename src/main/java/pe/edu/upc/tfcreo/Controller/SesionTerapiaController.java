@@ -4,9 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.SesionTerapiaDTO;
-import pe.edu.upc.tfcreo.Dtos.TarjetaDTO;
 import pe.edu.upc.tfcreo.Entity.SesionTerapia;
-import pe.edu.upc.tfcreo.Entity.Tarjeta;
 import pe.edu.upc.tfcreo.ServicesInterface.SesionTerapiaInterface;
 
 import java.util.List;
@@ -48,4 +46,23 @@ public class SesionTerapiaController {
             return m.map(x, SesionTerapiaDTO.class);
         }).collect(Collectors.toList());
     }
+
+    //listarsesiones por usuario
+    @GetMapping("/sesionUsuario/{id}")
+    public List<SesionTerapiaDTO> ListsesionUsuario(@PathVariable("id") int id) {
+        return sesionTerapiaInterface.quantitySesionesbyUsuario(id).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, SesionTerapiaDTO.class);
+        }).collect(Collectors.toList());
+    }
+    //listarsesiones completadas del usuario
+    @GetMapping("/sesionCompletoUsuario/{id}")
+    public List<SesionTerapiaDTO> ListsesionCompletoUsuario(@PathVariable("id") int id) {
+        return sesionTerapiaInterface.quantitySesionesCompletobyUsuario(id).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, SesionTerapiaDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+
 }

@@ -3,6 +3,7 @@ package pe.edu.upc.tfcreo.Controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.PorcentajeVideosDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresomusicaSDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresovideosTRDTO;
 import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
@@ -48,4 +49,24 @@ public class ProgresovideosTRController {
             return m.map(x, ProgresovideosTRDTO.class);
         }).collect(Collectors.toList());
     }
+
+    //Porcentaje de progreso
+    @GetMapping("/progreso/{id}")
+    public PorcentajeVideosDTO obtenerProgresoDTO(@PathVariable int id) {
+        double porcentaje = progresovideosTRInterface.calcularPorcentajeProgreso(id);
+
+        PorcentajeVideosDTO porcentajeDTO = new PorcentajeVideosDTO(id, porcentaje);
+
+        return porcentajeDTO;
+    }
+
+    //Lista de videos completados
+    @GetMapping("/videocompleto/{id}")
+    public List<ProgresovideosTRDTO> ListVideoCompleto(@PathVariable int id) {
+        return progresovideosTRInterface.quantityVideosCompletadosBySesion(id).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ProgresovideosTRDTO.class);
+        }).collect(Collectors.toList());
+    }
+
 }

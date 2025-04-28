@@ -11,7 +11,7 @@ public class MaterialMeditacion {
     private int idMaterialMeditacion;
 
     @Column(name = "nombreMaterialMeditacion", nullable = false, length = 200)
-    private String nombreMaterialMeditacion;
+    private String nombreMaterialMeditacion; //del video, mmusica, documento que pertenece a la tecnica de meditacion
 
     @Column(name = "urlMaterialMeditacion", nullable = false, length = 200)
     private String urlMaterialMeditacion;

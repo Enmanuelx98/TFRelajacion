@@ -30,4 +30,14 @@ public class SesionTerapiaServiceImple implements SesionTerapiaInterface {
     public List<SesionTerapia> listarSesionTerapia() {
         return sesionTerapiaRepository.findAll();
     }
+
+    @Override
+    public List<SesionTerapia> quantitySesionesbyUsuario(int u) {
+        return sesionTerapiaRepository.quantitySesionesbyUsuario(u);
+    }
+
+    @Override
+    public List<SesionTerapia> quantitySesionesCompletobyUsuario(int u2) {
+        return sesionTerapiaRepository.quantitySesionesCompletobyUsuario(u2);
+    }
 }

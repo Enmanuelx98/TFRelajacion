@@ -10,7 +10,7 @@ public class TipoMaterial {
     private int idTipoMaterial;
 
     @Column(name = "nombreTipoMaterial", nullable = false, length = 50)
-    private String nombreTipoMaterial;
+    private String nombreTipoMaterial; //videos, documentos, musica
 
     public TipoMaterial() {}
 

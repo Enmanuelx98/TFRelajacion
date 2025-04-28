@@ -10,7 +10,7 @@ public class TecnicaMeditacion {
     private int idTecnicaMeditacion;
 
     @Column(name = "nombreTecnicaMeditacion", nullable = false, length = 50)
-    private String nombreTecnicaMeditacion;
+    private String nombreTecnicaMeditacion; //de que trata la tecnica
 
     @Column(name = "descripcionTecnicaMeditacion", nullable = false, length = 200)
     private String descripcionTecnicaMeditacion;
