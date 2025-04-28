@@ -31,7 +31,6 @@ public class ProgresoMaterialMediImple implements ProgresoMaterialMediInterface 
     public List<ProgresoMaterialMedi> listarProgresoMaterialMedi() {
         return progresoMaterialMediRepository.findAll();
     }
-
     @Override
     public double calcularPorcentajeProgreso(int idSesion) {
         List<ProgresoMaterialMedi> totalVideos = progresoMaterialMediRepository.countMaterialBySesion(idSesion);

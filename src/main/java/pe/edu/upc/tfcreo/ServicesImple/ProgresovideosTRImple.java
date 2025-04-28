@@ -33,7 +33,6 @@ public class ProgresovideosTRImple implements ProgresovideosTRInterface {
     public List<ProgresovideosTR> listarProgresoVideosTR() {
         return progresovideosTRRepository.findAll();
     }
-
     @Override
     public double calcularPorcentajeProgreso(int idSesion) {
 
