@@ -49,5 +49,22 @@ public class ProgresoMaterialMediController {
         }).collect(Collectors.toList());
     }
 
-    
+    //Porcentaje de progreso
+    @GetMapping("/progreso/{id}")
+    public PorcentajeDTO obtenerProgresoMaterialDTO(@PathVariable int id) {
+        double porcentaje = progresoMaterialMediInterface.calcularPorcentajeProgreso(id);
+
+        PorcentajeDTO porcentajeDTO = new PorcentajeDTO(id, porcentaje);
+
+        return porcentajeDTO;
+    }
+
+    //Lista de materiales completados
+    @GetMapping("/materialcompleta/{id}")
+    public List<ProgresoMaterialMediDTO> ListMusicaCompleto(@PathVariable int id) {
+        return progresoMaterialMediInterface.quantityMaterialCompletadosBySesion(id).stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ProgresoMaterialMediDTO.class);
+        }).collect(Collectors.toList());
+    }
 }
