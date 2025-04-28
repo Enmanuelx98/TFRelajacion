@@ -21,11 +21,11 @@ public class Users implements Serializable {
 
     private Boolean enabled;
 
-    @Column(name = "correoUsuario", nullable = false, length = 50)
-    private String correoUsuario;
+    @Column(name = "correousuario", nullable = false, length = 50)
+    private String correousuario;
 
-    @Column(name = "fechaNacimientoUsuario", nullable = false)
-    private LocalDate fechaNacimientoUsuario;
+    @Column(name = "fechanacimientousuario", nullable = false)
+    private LocalDate fechanacimientousuario;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id")
@@ -33,22 +33,22 @@ public class Users implements Serializable {
 
     public Users(){}
 
-    public Users(String correoUsuario, Boolean enabled, LocalDate fechaNacimientoUsuario, int id, String password, List<Role> roles, String username) {
-        this.correoUsuario = correoUsuario;
+    public Users(String correousuario, Boolean enabled, LocalDate fechanacimientousuario, int id, String password, List<Role> roles, String username) {
+        this.correousuario = correousuario;
         this.enabled = enabled;
-        this.fechaNacimientoUsuario = fechaNacimientoUsuario;
+        this.fechanacimientousuario = fechanacimientousuario;
         this.id = id;
         this.password = password;
         this.roles = roles;
         this.username = username;
     }
 
-    public String getCorreoUsuario() {
-        return correoUsuario;
+    public String getCorreousuario() {
+        return correousuario;
     }
 
-    public void setCorreoUsuario(String correoUsuario) {
-        this.correoUsuario = correoUsuario;
+    public void setCorreousuario(String correousuario) {
+        this.correousuario = correousuario;
     }
 
     public Boolean getEnabled() {
@@ -59,12 +59,12 @@ public class Users implements Serializable {
         this.enabled = enabled;
     }
 
-    public LocalDate getFechaNacimientoUsuario() {
-        return fechaNacimientoUsuario;
+    public LocalDate getFechanacimientousuario() {
+        return fechanacimientousuario;
     }
 
-    public void setFechaNacimientoUsuario(LocalDate fechaNacimientoUsuario) {
-        this.fechaNacimientoUsuario = fechaNacimientoUsuario;
+    public void setFechanacimientousuario(LocalDate fechanacimientousuario) {
+        this.fechanacimientousuario = fechanacimientousuario;
     }
 
     public int getId() {

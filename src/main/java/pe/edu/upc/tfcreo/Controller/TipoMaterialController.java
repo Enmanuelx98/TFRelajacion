@@ -12,13 +12,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = {"*", "http://localhost:4200","http://18.224.80.144/"}, allowedHeaders = "*")
 @RequestMapping("/tipomaterial")
 public class TipoMaterialController {
     @Autowired
     private TipoMaterialServiceInterface tipoMaterialService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAuthority('ADMIN')")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void insertar(@RequestBody TipoMaterialDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TipoMaterial tipoMaterial = modelMapper.map(dto, TipoMaterial.class);
@@ -27,6 +28,7 @@ public class TipoMaterialController {
 
     //modificar
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void editar(@RequestBody TipoMaterialDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TipoMaterial tipoMaterial = modelMapper.map(dto, TipoMaterial.class);
@@ -36,13 +38,14 @@ public class TipoMaterialController {
 
     //delete
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void eliminar(@PathVariable("id") int id) {
         tipoMaterialService.eliminarTipoMaterial(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAuthority('USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<TipoMaterialDTO> List() {
         return tipoMaterialService.listarTipoMaterial().stream().map(x -> {
             ModelMapper m = new ModelMapper();

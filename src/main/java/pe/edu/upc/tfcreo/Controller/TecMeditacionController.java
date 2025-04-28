@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.Controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.CantidadTecnicaMeditacionPorTipoTerapiaDTO;
 import pe.edu.upc.tfcreo.Dtos.TecnicaMeditacionDTO;
@@ -14,12 +15,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = {"*", "http://localhost:4200","http://18.224.80.144/"}, allowedHeaders = "*")
 @RequestMapping("/TecMeditacion")
 public class TecMeditacionController {
     @Autowired
     private TecMeditacionServiceInterface tecMeditacionService;
     //insertar
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void insertar(@RequestBody TecnicaMeditacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TecnicaMeditacion tecnicaMeditacion = modelMapper.map(dto, TecnicaMeditacion.class);
@@ -28,6 +31,7 @@ public class TecMeditacionController {
 
     //modificar
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void editar(@RequestBody TecnicaMeditacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TecnicaMeditacion tecnicaMeditacion = modelMapper.map(dto, TecnicaMeditacion.class);
@@ -37,12 +41,14 @@ public class TecMeditacionController {
 
     //delete
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void eliminar(@PathVariable("id") int id) {
         tecMeditacionService.eliminarTecMeditacion(id);
     }
 
     //listar
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<TecnicaMeditacionDTO> List() {
         return tecMeditacionService.listarTecMeditacion().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -51,6 +57,7 @@ public class TecMeditacionController {
     }
 
     @GetMapping("/buscarTecnicasMeditacionesPorTiposTerapias")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<TecnicaMeditacionPorTipoTerapiaDTO> tecnicaMeditacionPorTipoTerapia(){
         List<TecnicaMeditacionPorTipoTerapiaDTO> dtotecnicaMeditacionPorTipoTerapiaList = new ArrayList<>();
         List<String[]> fila = tecMeditacionService.tecnicaMeditacionPorTipoTerapia();
@@ -64,6 +71,7 @@ public class TecMeditacionController {
     }
 
     @GetMapping("/cantidadesTecnicasMeditacionesPorTiposTerapias")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<CantidadTecnicaMeditacionPorTipoTerapiaDTO> cantidadTecnicaMeditacionPorTipoTerapia(){
         List<CantidadTecnicaMeditacionPorTipoTerapiaDTO> dtocantidadTecnicaMeditacionPorTipoTerapiaList = new ArrayList<>();
         List<String[]> fila = tecMeditacionService.cantidadTecnicasMeditacionPorTipoTerapia();

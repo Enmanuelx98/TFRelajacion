@@ -2,6 +2,7 @@ package pe.edu.upc.tfcreo.Controller;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
 import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
@@ -11,12 +12,14 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
+@CrossOrigin(origins = {"*", "http://localhost:4200","http://18.224.80.144/"}, allowedHeaders = "*")
 @RequestMapping("/BilleteraElectronica")
 public class BilleteraElecController {
     @Autowired
     private BilleteraElecServiceInterface billeteraElecService;
     //insertar
     @PostMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void insertar(@RequestBody BilleteraElectronicaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         BilleteraElectronica billetera = modelMapper.map(dto, BilleteraElectronica.class);
@@ -25,6 +28,7 @@ public class BilleteraElecController {
 
     //modificar
     @PutMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void editar(@RequestBody BilleteraElectronicaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         BilleteraElectronica billetera = modelMapper.map(dto, BilleteraElectronica.class);
@@ -34,12 +38,14 @@ public class BilleteraElecController {
 
     //delete
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public void eliminar(@PathVariable("id") int id) {
         billeteraElecService.eliminarBilleteraElec(id);
     }
 
     //listar
     @GetMapping
+    @PreAuthorize("hasAnyRole('ADMIN','USER')")
     public List<BilleteraElectronicaDTO> List() {
         return billeteraElecService.listarBilleteraElec().stream().map(x -> {
             ModelMapper m = new ModelMapper();
