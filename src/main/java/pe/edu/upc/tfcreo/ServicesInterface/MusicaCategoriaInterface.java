@@ -8,4 +8,6 @@ public interface MusicaCategoriaInterface {
     public void updateMusicaCategoria(MusicaCategoria musicacategoria);
     public void eliminarMusicaCategoria(int id);
     public List<MusicaCategoria> listarMusicaCategoria();
+     public List<MusicaCategoria> ListarCategoriaOrdenadas();
+
 }
