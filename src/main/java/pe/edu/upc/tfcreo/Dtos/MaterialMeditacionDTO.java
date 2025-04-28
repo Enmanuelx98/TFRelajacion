@@ -1,10 +1,6 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import pe.edu.upc.tfcreo.Entity.TecnicaMeditacion;
-import pe.edu.upc.tfcreo.Entity.TipoMaterial;
-
-
 public class MaterialMeditacionDTO {
     private int idMaterialMeditacion;
     private String nombreMaterialMeditacion;

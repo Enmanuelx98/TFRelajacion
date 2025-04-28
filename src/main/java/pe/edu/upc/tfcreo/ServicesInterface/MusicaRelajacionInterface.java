@@ -1,6 +1,5 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
-import pe.edu.upc.tfcreo.Entity.MusicaRelajacion;
 import java.util.List;
 
 public interface MusicaRelajacionInterface {

@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.BilleteraElectronicaDTO;
-import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
 import pe.edu.upc.tfcreo.ServicesInterface.BilleteraElecServiceInterface;
 
 import java.util.List;

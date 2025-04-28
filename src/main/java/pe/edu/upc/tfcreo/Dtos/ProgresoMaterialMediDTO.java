@@ -1,8 +1,5 @@
 package pe.edu.upc.tfcreo.Dtos;
 
-import pe.edu.upc.tfcreo.Entity.MaterialMeditacion;
-import pe.edu.upc.tfcreo.Entity.SesionTerapia;
-
 import java.time.LocalDate;
 
 public class ProgresoMaterialMediDTO {

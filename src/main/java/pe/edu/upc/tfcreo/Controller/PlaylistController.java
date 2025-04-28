@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.PlaylistDTO;
-import pe.edu.upc.tfcreo.Entity.Playlist;
 import pe.edu.upc.tfcreo.ServicesInterface.PlaylistServiceInterface;
 
 import java.util.List;

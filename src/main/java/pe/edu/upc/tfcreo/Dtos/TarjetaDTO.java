@@ -1,9 +1,6 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import pe.edu.upc.tfcreo.Entity.Pagos;
-
-
 public class TarjetaDTO {
     private int idTarjeta;
     private String nombreTitularTarjeta;

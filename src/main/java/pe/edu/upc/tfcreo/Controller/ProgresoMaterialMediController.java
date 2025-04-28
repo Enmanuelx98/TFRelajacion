@@ -4,9 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.ProgresoMaterialMediDTO;
-import pe.edu.upc.tfcreo.Dtos.ProgresomusicaSDTO;
-import pe.edu.upc.tfcreo.Entity.ProgresoMaterialMedi;
-import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
 import pe.edu.upc.tfcreo.ServicesInterface.ProgresoMaterialMediInterface;
 
 import java.util.List;

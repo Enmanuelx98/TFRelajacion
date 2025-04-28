@@ -1,9 +1,6 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import pe.edu.upc.tfcreo.Entity.Terapia;
-
-
 public class TecnicaMeditacionDTO {
     private int idTecnicaMeditacion;
     private String nombreTecnicaMeditacion;

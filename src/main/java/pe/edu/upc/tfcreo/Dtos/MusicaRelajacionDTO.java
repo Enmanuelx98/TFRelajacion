@@ -1,12 +1,6 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import pe.edu.upc.tfcreo.Entity.MusicaCategoria;
-import pe.edu.upc.tfcreo.Entity.Playlist;
-import pe.edu.upc.tfcreo.Entity.Terapia;
-import pe.edu.upc.tfcreo.Entity.Usuario;
-
-
 public class MusicaRelajacionDTO {
     private int idMusica;
     private String nombreMusica;

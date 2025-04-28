@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.TecnicaMeditacionDTO;
-import pe.edu.upc.tfcreo.Entity.TecnicaMeditacion;
 import pe.edu.upc.tfcreo.ServicesInterface.TecMeditacionServiceInterface;
 
 import java.util.List;

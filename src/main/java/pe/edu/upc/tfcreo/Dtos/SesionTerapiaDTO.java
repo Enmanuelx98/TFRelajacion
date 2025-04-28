@@ -1,9 +1,6 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import pe.edu.upc.tfcreo.Entity.Terapia;
-import pe.edu.upc.tfcreo.Entity.Usuario;
-
 import java.time.LocalDate;
 
 public class SesionTerapiaDTO {

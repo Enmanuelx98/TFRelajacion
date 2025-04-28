@@ -1,55 +1,38 @@
-package pe.edu.upc.tfcreo.Entity;
+package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
+import org.hibernate.annotations.processing.Pattern;
 
 @Entity
-@Table(name = "Tarjeta")
+@Table(name = "tarjeta")
 public class Tarjeta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTarjeta;
 
-    @Column(name = "nombreTitularTarjeta", nullable = false, length = 50)
+    @Column(name = "nombreTitular",length = 50, nullable = false)
     private String nombreTitularTarjeta;
-
-    @Column(name = "numeroTarjeta", nullable = false, length = 50)
+    @Column(name = "numeroTarjeta",length = 16, nullable = false)
     private String numeroTarjeta;
-
-    @Column(name = "cvvTarjeta", nullable = false, length = 50)
-    private String cvvTarjeta;
-
-    @Column(name = "fechacaducidadTarjeta", nullable = false, length = 50)
-    private String fechacaducidadTarjeta;
+    @Column(name = "cvvTarjeta",length = 4, nullable = false)
+    private int cvvTarjeta;
+    @Column(name = "fechaCaducidadTarjeta",length = 4, nullable = false)
+    private String fechaCaducidadTarjeta;
 
     @ManyToOne
-    @JoinColumn(name = "idpagos")
+    @JoinColumn(name = "idPagos")
     private Pagos pagos;
 
-    public Tarjeta() {}
+    public Tarjeta() {
+    }
 
-    public Tarjeta(String cvvTarjeta, String fechacaducidadTarjeta, int idTarjeta, String nombreTitularTarjeta, String numeroTarjeta, Pagos pagos) {
-        this.cvvTarjeta = cvvTarjeta;
-        this.fechacaducidadTarjeta = fechacaducidadTarjeta;
+    public Tarjeta(int idTarjeta, String nombreTitularTarjeta, String numeroTarjeta, int cvvTarjeta, String fechaCaducidadTarjeta, Pagos pagos) {
         this.idTarjeta = idTarjeta;
         this.nombreTitularTarjeta = nombreTitularTarjeta;
         this.numeroTarjeta = numeroTarjeta;
-        this.pagos = pagos;
-    }
-
-    public String getCvvTarjeta() {
-        return cvvTarjeta;
-    }
-
-    public void setCvvTarjeta(String cvvTarjeta) {
         this.cvvTarjeta = cvvTarjeta;
-    }
-
-    public String getFechacaducidadTarjeta() {
-        return fechacaducidadTarjeta;
-    }
-
-    public void setFechacaducidadTarjeta(String fechacaducidadTarjeta) {
-        this.fechacaducidadTarjeta = fechacaducidadTarjeta;
+        this.fechaCaducidadTarjeta = fechaCaducidadTarjeta;
+        this.pagos = pagos;
     }
 
     public int getIdTarjeta() {
@@ -76,6 +59,22 @@ public class Tarjeta {
         this.numeroTarjeta = numeroTarjeta;
     }
 
+    public int getCvvTarjeta() {
+        return cvvTarjeta;
+    }
+
+    public void setCvvTarjeta(int cvvTarjeta) {
+        this.cvvTarjeta = cvvTarjeta;
+    }
+
+    public String getFechaCaducidadTarjeta() {
+        return fechaCaducidadTarjeta;
+    }
+
+    public void setFechaCaducidadTarjeta(String fechaCaducidadTarjeta) {
+        this.fechaCaducidadTarjeta = fechaCaducidadTarjeta;
+    }
+
     public Pagos getPagos() {
         return pagos;
     }
@@ -84,3 +83,4 @@ public class Tarjeta {
         this.pagos = pagos;
     }
 }
+

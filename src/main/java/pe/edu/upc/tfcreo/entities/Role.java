@@ -1,8 +1,8 @@
-package pe.edu.upc.tfcreo.Entity;
+package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
-
 import java.io.Serializable;
+
 
 @Entity
 @Table(name = "roles", uniqueConstraints = { @UniqueConstraint(columnNames = { "usuarios_id", "rol" }) })
@@ -16,16 +16,16 @@ public class Role implements Serializable {
 
     @ManyToOne
     @JoinColumn(name = "usuarios_id", nullable = false)
-    private Usuario usuario;
+    private Usuarios usuarios;
 
 
     public Role() {
     }
 
-    public Role(Long id, String rol, Usuario usuarios) {
+    public Role(Long id, String rol, Usuarios usuarios) {
         this.id = id;
         this.rol = rol;
-        this.usuario = usuarios;
+        this.usuarios = usuarios;
     }
 
     public Long getId() {
@@ -44,11 +44,11 @@ public class Role implements Serializable {
         this.rol = rol;
     }
 
-    public Usuario getUsuarios() {
-        return usuario;
+    public Usuarios getUsuarios() {
+        return usuarios;
     }
 
-    public void setUsuarios(Usuario usuarios) {
-        this.usuario = usuarios;
+    public void setUsuarios(Usuarios usuarios) {
+        this.usuarios = usuarios;
     }
 }

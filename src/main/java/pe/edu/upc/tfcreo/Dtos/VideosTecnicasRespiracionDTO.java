@@ -1,8 +1,5 @@
 package pe.edu.upc.tfcreo.Dtos;
 
-import pe.edu.upc.tfcreo.Entity.Terapia;
-import pe.edu.upc.tfcreo.Entity.Usuario;
-
 public class VideosTecnicasRespiracionDTO {
     private int idVideosTecnicasRespiracion;
     private String nombreRespiracion;

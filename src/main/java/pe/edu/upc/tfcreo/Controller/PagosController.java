@@ -4,7 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.PagosDTO;
-import pe.edu.upc.tfcreo.Entity.Pagos;
 import pe.edu.upc.tfcreo.ServicesInterface.PagosServiceInterface;
 
 import java.util.List;

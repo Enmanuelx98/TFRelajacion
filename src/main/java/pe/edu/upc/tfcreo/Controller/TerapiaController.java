@@ -4,8 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.TerapiaDTO;
-import pe.edu.upc.tfcreo.Entity.Terapia;
-import pe.edu.upc.tfcreo.ServicesImple.TerapiaServiceImple;
 import pe.edu.upc.tfcreo.ServicesInterface.TerapiaServiceInterface;
 
 import java.util.List;

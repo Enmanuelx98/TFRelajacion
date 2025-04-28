@@ -2,7 +2,6 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.tfcreo.Entity.BilleteraElectronica;
 import pe.edu.upc.tfcreo.Repository.BilleteraElecRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.BilleteraElecServiceInterface;
 

@@ -4,8 +4,6 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.UsuarioDTO;
-import pe.edu.upc.tfcreo.Entity.Usuario;
-import pe.edu.upc.tfcreo.ServicesImple.UsuarioServiceImple;
 import pe.edu.upc.tfcreo.ServicesInterface.UsuarioServiceInterface;
 
 import java.util.List;

@@ -3,10 +3,7 @@ package pe.edu.upc.tfcreo.Controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.tfcreo.Dtos.TerapiaDTO;
 import pe.edu.upc.tfcreo.Dtos.TipoMaterialDTO;
-import pe.edu.upc.tfcreo.Entity.Terapia;
-import pe.edu.upc.tfcreo.Entity.TipoMaterial;
 import pe.edu.upc.tfcreo.ServicesInterface.TipoMaterialServiceInterface;
 
 import java.util.List;

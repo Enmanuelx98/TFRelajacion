@@ -1,7 +1,5 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
-import pe.edu.upc.tfcreo.Entity.TipoMaterial;
-
 import java.util.List;
 
 public interface TipoMaterialServiceInterface {

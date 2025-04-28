@@ -1,8 +1,5 @@
 package pe.edu.upc.tfcreo.Dtos;
 
-import pe.edu.upc.tfcreo.Entity.SesionTerapia;
-import pe.edu.upc.tfcreo.Entity.VideosTecnicasRespiracion;
-
 import java.time.LocalDate;
 
 public class ProgresovideosTRDTO {
