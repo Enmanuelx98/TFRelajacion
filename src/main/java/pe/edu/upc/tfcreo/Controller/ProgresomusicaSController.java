@@ -3,7 +3,9 @@ package pe.edu.upc.tfcreo.Controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.PorcentajeDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresomusicaSDTO;
+import pe.edu.upc.tfcreo.Dtos.ProgresovideosTRDTO;
 import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
 import pe.edu.upc.tfcreo.ServicesInterface.ProgresomusicaSInterface;
 
@@ -42,6 +44,25 @@ public class ProgresomusicaSController {
     @GetMapping
     public List<ProgresomusicaSDTO> List() {
         return progresomusicaSInterface.listarProgresoMusica().stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, ProgresomusicaSDTO.class);
+        }).collect(Collectors.toList());
+    }
+
+    //Porcentaje de progreso
+    @GetMapping("/progreso/{id}")
+    public PorcentajeDTO obtenerProgresoMusicaDTO(@PathVariable int id) {
+        double porcentaje = progresomusicaSInterface.calcularPorcentajeProgreso(id);
+
+        PorcentajeDTO porcentajeDTO = new PorcentajeDTO(id, porcentaje);
+
+        return porcentajeDTO;
+    }
+
+    //Lista de musica completados
+    @GetMapping("/musicacompleta/{id}")
+    public List<ProgresomusicaSDTO> ListMusicaCompleto(@PathVariable int id) {
+        return progresomusicaSInterface.quantityMusicaCompletoBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, ProgresomusicaSDTO.class);
         }).collect(Collectors.toList());

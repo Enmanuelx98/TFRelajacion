@@ -1,12 +1,12 @@
 package pe.edu.upc.tfcreo.Dtos;
 
-public class PorcentajeVideosDTO {
+public class PorcentajeDTO {
     private int idsesion;
     private double porcentaje;
 
-    public PorcentajeVideosDTO(){}
+    public PorcentajeDTO(){}
 
-    public PorcentajeVideosDTO(int idsesion, double porcentaje) {
+    public PorcentajeDTO(int idsesion, double porcentaje) {
         this.idsesion = idsesion;
         this.porcentaje = porcentaje;
     }

@@ -3,10 +3,8 @@ package pe.edu.upc.tfcreo.Controller;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.tfcreo.Dtos.PorcentajeVideosDTO;
-import pe.edu.upc.tfcreo.Dtos.ProgresomusicaSDTO;
+import pe.edu.upc.tfcreo.Dtos.PorcentajeDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresovideosTRDTO;
-import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
 import pe.edu.upc.tfcreo.Entity.ProgresovideosTR;
 import pe.edu.upc.tfcreo.ServicesInterface.ProgresovideosTRInterface;
 
@@ -52,10 +50,10 @@ public class ProgresovideosTRController {
 
     //Porcentaje de progreso
     @GetMapping("/progreso/{id}")
-    public PorcentajeVideosDTO obtenerProgresoDTO(@PathVariable int id) {
+    public PorcentajeDTO obtenerProgresoDTO(@PathVariable int id) {
         double porcentaje = progresovideosTRInterface.calcularPorcentajeProgreso(id);
 
-        PorcentajeVideosDTO porcentajeDTO = new PorcentajeVideosDTO(id, porcentaje);
+        PorcentajeDTO porcentajeDTO = new PorcentajeDTO(id, porcentaje);
 
         return porcentajeDTO;
     }

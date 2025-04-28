@@ -5,7 +5,6 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
 import pe.edu.upc.tfcreo.Entity.ProgresovideosTR;
-import pe.edu.upc.tfcreo.Entity.VideosTecnicasRespiracion;
 
 import java.util.List;
 
