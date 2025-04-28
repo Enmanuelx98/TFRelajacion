@@ -11,6 +11,12 @@ import java.util.List;
 
 @Repository
 public interface ProgresovideosTRRepository extends JpaRepository<ProgresovideosTR, Integer> {
+   //Cantidad de videos que estan completados de una sesion
+    @Query(value = "select * from ProgresovideosTR p where p.idsesion_Terapia = :idSesion and completado = true", nativeQuery = true)
+    public List<ProgresovideosTR> quantityVideosCompletadosBySesion(@Param("idSesion") int idSesion);
 
+    //Cantidad de videos por sesion
+    @Query(value = "select * from ProgresovideosTR p where p.idsesion_Terapia = :idSesion", nativeQuery = true)
+    public List<ProgresovideosTR> countVideosBySesion(@Param("idSesion") int idSesion);
 
 }
