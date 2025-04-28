@@ -22,16 +22,16 @@ public class Membresia {
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    private Users users;
 
     public Membresia() {}
 
-    public Membresia(Boolean estadoMembresia, LocalDate fechafinalMembresia, LocalDate fechainicioMembresia, int idMembresia, Usuario usuario) {
+    public Membresia(Boolean estadoMembresia, LocalDate fechafinalMembresia, LocalDate fechainicioMembresia, int idMembresia, Users users) {
         this.estadoMembresia = estadoMembresia;
         this.fechafinalMembresia = fechafinalMembresia;
         this.fechainicioMembresia = fechainicioMembresia;
         this.idMembresia = idMembresia;
-        this.usuario = usuario;
+        this.users = users;
     }
 
     public Boolean getEstadoMembresia() {
@@ -66,11 +66,11 @@ public class Membresia {
         this.idMembresia = idMembresia;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 }

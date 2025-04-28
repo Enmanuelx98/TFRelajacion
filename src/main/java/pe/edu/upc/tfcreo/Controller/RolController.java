@@ -4,7 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.RolDTO;
-import pe.edu.upc.tfcreo.Entity.Rol;
+import pe.edu.upc.tfcreo.Entity.Role;
 import pe.edu.upc.tfcreo.ServicesInterface.RolSeriveInterface;
 
 import java.util.List;
@@ -20,16 +20,16 @@ public class RolController {
     @PostMapping
     public void insertar(@RequestBody RolDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        Rol rol = modelMapper.map(dto, Rol.class);
-        rolSerive.insertarRol(rol);
+        Role role = modelMapper.map(dto, Role.class);
+        rolSerive.insertarRol(role);
     }
 
     //modificar
     @PutMapping
     public void editar(@RequestBody RolDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        Rol rol = modelMapper.map(dto, Rol.class);
-        rolSerive.updateRol(rol);
+        Role role = modelMapper.map(dto, Role.class);
+        rolSerive.updateRol(role);
 
     }
 

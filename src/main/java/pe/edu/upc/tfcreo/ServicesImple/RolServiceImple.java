@@ -2,7 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.tfcreo.Entity.Rol;
+import pe.edu.upc.tfcreo.Entity.Role;
 import pe.edu.upc.tfcreo.Repository.RolRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.RolSeriveInterface;
 
@@ -12,13 +12,13 @@ public class RolServiceImple implements RolSeriveInterface {
     @Autowired
     private RolRepository rolRepository;
     @Override
-    public void insertarRol(Rol rol) {
-        rolRepository.save(rol);
+    public void insertarRol(Role role) {
+        rolRepository.save(role);
     }
 
     @Override
-    public void updateRol(Rol rol) {
-        rolRepository.save(rol);
+    public void updateRol(Role role) {
+        rolRepository.save(role);
     }
 
     @Override
@@ -27,7 +27,7 @@ public class RolServiceImple implements RolSeriveInterface {
     }
 
     @Override
-    public List<Rol> listarRol() {
+    public List<Role> listarRol() {
         return rolRepository.findAll();
     }
 

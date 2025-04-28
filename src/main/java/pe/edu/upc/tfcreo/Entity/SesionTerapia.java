@@ -22,20 +22,20 @@ public class SesionTerapia {
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    private Users users;
     @ManyToOne
     @JoinColumn(name = "idterapia")
     private Terapia terapia;
 
     public SesionTerapia() {}
 
-    public SesionTerapia(Boolean completado, LocalDate fechaFin, LocalDate fechaInicio, int idSesion, Terapia terapia, Usuario usuario) {
+    public SesionTerapia(Boolean completado, LocalDate fechaFin, LocalDate fechaInicio, int idSesion, Terapia terapia, Users users) {
         this.completado = completado;
         this.fechaFin = fechaFin;
         this.fechaInicio = fechaInicio;
         this.idSesion = idSesion;
         this.terapia = terapia;
-        this.usuario = usuario;
+        this.users = users;
     }
 
     public Boolean getCompletado() {
@@ -78,11 +78,11 @@ public class SesionTerapia {
         this.terapia = terapia;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 }

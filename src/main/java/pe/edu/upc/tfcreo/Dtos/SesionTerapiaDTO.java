@@ -2,7 +2,7 @@ package pe.edu.upc.tfcreo.Dtos;
 
 
 import pe.edu.upc.tfcreo.Entity.Terapia;
-import pe.edu.upc.tfcreo.Entity.Usuario;
+import pe.edu.upc.tfcreo.Entity.Users;
 
 import java.time.LocalDate;
 
@@ -11,7 +11,7 @@ public class SesionTerapiaDTO {
     private LocalDate fechaInicio;
     private LocalDate fechaFin;
     private Boolean completado;
-    private Usuario usuario;
+    private Users users;
     private Terapia terapia;
 
     public Boolean getCompletado() {
@@ -54,11 +54,11 @@ public class SesionTerapiaDTO {
         this.terapia = terapia;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 }

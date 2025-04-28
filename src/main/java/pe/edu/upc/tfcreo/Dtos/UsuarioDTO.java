@@ -1,6 +1,6 @@
 package pe.edu.upc.tfcreo.Dtos;
 
-import pe.edu.upc.tfcreo.Entity.Rol;
+import pe.edu.upc.tfcreo.Entity.Role;
 
 import java.time.LocalDate;
 
@@ -9,7 +9,7 @@ public class UsuarioDTO {
     private String nombreUsuario;
     private String correoUsuario;
     private LocalDate fechaNacimientoUsuario;
-    private Rol rol;
+    private Role role;
 
 
     public String getCorreoUsuario() {
@@ -44,11 +44,11 @@ public class UsuarioDTO {
         this.nombreUsuario = nombreUsuario;
     }
 
-    public Rol getRol() {
-        return rol;
+    public Role getRol() {
+        return role;
     }
 
-    public void setRol(Rol rol) {
-        this.rol = rol;
+    public void setRol(Role role) {
+        this.role = role;
     }
 }

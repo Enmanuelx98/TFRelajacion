@@ -1,12 +1,12 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
-import pe.edu.upc.tfcreo.Entity.Rol;
+import pe.edu.upc.tfcreo.Entity.Role;
 
 import java.util.List;
 
 public interface RolSeriveInterface {
-    public void insertarRol(Rol rol);
-    public void updateRol(Rol rol);
+    public void insertarRol(Role role);
+    public void updateRol(Role role);
     public void eliminarRol(int id);
-    public List<Rol> listarRol();
+    public List<Role> listarRol();
 }

@@ -21,15 +21,15 @@ public class Pagos {
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    private Users users;
 
     public Pagos() {}
 
-    public Pagos(LocalDate fechaPago, int idPagos, String tipoPago, Usuario usuario) {
+    public Pagos(LocalDate fechaPago, int idPagos, String tipoPago, Users users) {
         this.fechaPago = fechaPago;
         this.idPagos = idPagos;
         this.tipoPago = tipoPago;
-        this.usuario = usuario;
+        this.users = users;
     }
 
     public LocalDate getFechaPago() {
@@ -56,11 +56,11 @@ public class Pagos {
         this.tipoPago = tipoPago;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 }

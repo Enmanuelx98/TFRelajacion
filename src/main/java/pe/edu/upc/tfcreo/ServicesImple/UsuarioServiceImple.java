@@ -2,7 +2,7 @@ package pe.edu.upc.tfcreo.ServicesImple;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import pe.edu.upc.tfcreo.Entity.Usuario;
+import pe.edu.upc.tfcreo.Entity.Users;
 import pe.edu.upc.tfcreo.Repository.UsuarioRepository;
 import pe.edu.upc.tfcreo.ServicesInterface.UsuarioServiceInterface;
 
@@ -13,13 +13,13 @@ public class UsuarioServiceImple implements UsuarioServiceInterface {
     private UsuarioRepository usuarioRepository;
 
     @Override
-    public void insertarUsuario(Usuario usuario) {
-        usuarioRepository.save(usuario);
+    public void insertarUsuario(Users users) {
+        usuarioRepository.save(users);
     }
 
     @Override
-    public void updateUsuario(Usuario usuario) {
-        usuarioRepository.save(usuario);
+    public void updateUsuario(Users users) {
+        usuarioRepository.save(users);
     }
 
     @Override
@@ -28,7 +28,7 @@ public class UsuarioServiceImple implements UsuarioServiceInterface {
     }
 
     @Override
-    public List<Usuario> listarUsuario() {
+    public List<Users> listarUsuario() {
         return usuarioRepository.findAll();
     }
 }

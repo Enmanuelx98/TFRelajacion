@@ -1,12 +1,12 @@
 package pe.edu.upc.tfcreo.ServicesInterface;
 
-import pe.edu.upc.tfcreo.Entity.Usuario;
+import pe.edu.upc.tfcreo.Entity.Users;
 
 import java.util.List;
 
 public interface UsuarioServiceInterface {
-    public void insertarUsuario(Usuario usuario);
-    public void updateUsuario(Usuario usuario);
+    public void insertarUsuario(Users users);
+    public void updateUsuario(Users users);
     public void eliminarUsuario(int id);
-    public List<Usuario> listarUsuario();
+    public List<Users> listarUsuario();
 }

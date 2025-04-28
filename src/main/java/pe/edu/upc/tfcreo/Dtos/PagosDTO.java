@@ -1,7 +1,7 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import pe.edu.upc.tfcreo.Entity.Usuario;
+import pe.edu.upc.tfcreo.Entity.Users;
 
 import java.time.LocalDate;
 
@@ -10,14 +10,14 @@ public class PagosDTO {
     private int idPagos;
     private String tipoPago;
     private LocalDate fechaPago;
-    private Usuario usuario;
+    private Users users;
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 
     public String getTipoPago() {

@@ -4,8 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.UsuarioDTO;
-import pe.edu.upc.tfcreo.Entity.Usuario;
-import pe.edu.upc.tfcreo.ServicesImple.UsuarioServiceImple;
+import pe.edu.upc.tfcreo.Entity.Users;
 import pe.edu.upc.tfcreo.ServicesInterface.UsuarioServiceInterface;
 
 import java.util.List;
@@ -20,16 +19,16 @@ public class UsuarioController {
     @PostMapping
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        Usuario usuario = modelMapper.map(dto, Usuario.class);
-        usuarioService.insertarUsuario(usuario);
+        Users users = modelMapper.map(dto, Users.class);
+        usuarioService.insertarUsuario(users);
     }
 
     //modificar
     @PutMapping
     public void editar(@RequestBody UsuarioDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        Usuario usuario = modelMapper.map(dto, Usuario.class);
-        usuarioService.updateUsuario(usuario);
+        Users users = modelMapper.map(dto, Users.class);
+        usuarioService.updateUsuario(users);
 
     }
 
