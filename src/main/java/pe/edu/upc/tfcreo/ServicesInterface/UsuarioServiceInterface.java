@@ -9,4 +9,5 @@ public interface UsuarioServiceInterface {
     public void updateUsuario(Users users);
     public void eliminarUsuario(int id);
     public List<Users> listarUsuario();
+    public Users buscarUsuariobyusername(String username);
 }

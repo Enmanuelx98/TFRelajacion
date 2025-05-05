@@ -21,7 +21,7 @@ public class ProgresoMaterialMediController {
     private ProgresoMaterialMediInterface progresoMaterialMediInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody ProgresoMaterialMediDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresoMaterialMedi progresomaterialMedi = modelMapper.map(dto, ProgresoMaterialMedi.class);
@@ -30,7 +30,7 @@ public class ProgresoMaterialMediController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody ProgresoMaterialMediDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresoMaterialMedi progresomaterialMedi = modelMapper.map(dto, ProgresoMaterialMedi.class);
@@ -40,14 +40,14 @@ public class ProgresoMaterialMediController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         progresoMaterialMediInterface.eliminarProgresoMaterialMedi(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<ProgresoMaterialMediDTO> List() {
         return progresoMaterialMediInterface.listarProgresoMaterialMedi().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -57,7 +57,7 @@ public class ProgresoMaterialMediController {
 
     //Porcentaje de progreso
     @GetMapping("/progreso/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public PorcentajeDTO obtenerProgresoMaterialDTO(@PathVariable int id) {
         double porcentaje = progresoMaterialMediInterface.calcularPorcentajeProgreso(id);
 
@@ -68,7 +68,7 @@ public class ProgresoMaterialMediController {
 
     //Lista de materiales completados
     @GetMapping("/materialcompleta/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<ProgresoMaterialMediDTO> ListMusicaCompleto(@PathVariable int id) {
         return progresoMaterialMediInterface.quantityMaterialCompletadosBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

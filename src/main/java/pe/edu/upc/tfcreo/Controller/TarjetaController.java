@@ -19,7 +19,7 @@ public class TarjetaController {
     private TarjetaServiceInterface tarjetaService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody TarjetaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Tarjeta tarjeta = modelMapper.map(dto, Tarjeta.class);
@@ -28,7 +28,7 @@ public class TarjetaController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody TarjetaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Tarjeta tarjeta = modelMapper.map(dto, Tarjeta.class);
@@ -38,14 +38,14 @@ public class TarjetaController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         tarjetaService.eliminarTarjeta(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<TarjetaDTO> List() {
         return tarjetaService.listarTarjeta().stream().map(x -> {
             ModelMapper m = new ModelMapper();

@@ -19,7 +19,7 @@ public class SesionTerapiaController {
     private SesionTerapiaInterface sesionTerapiaInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody SesionTerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         SesionTerapia sesion = modelMapper.map(dto, SesionTerapia.class);
@@ -28,7 +28,7 @@ public class SesionTerapiaController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody SesionTerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         SesionTerapia sesion = modelMapper.map(dto, SesionTerapia.class);
@@ -38,14 +38,14 @@ public class SesionTerapiaController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         sesionTerapiaInterface.eliminarSesionTerapia(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<SesionTerapiaDTO> List() {
         return sesionTerapiaInterface.listarSesionTerapia().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -55,7 +55,7 @@ public class SesionTerapiaController {
 
     //listarsesiones por usuario
     @GetMapping("/sesionUsuario/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<SesionTerapiaDTO> ListsesionUsuario(@PathVariable("id") int id) {
         return sesionTerapiaInterface.quantitySesionesbyUsuario(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -64,7 +64,7 @@ public class SesionTerapiaController {
     }
     //listarsesiones completadas del usuario
     @GetMapping("/sesionCompletoUsuario/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<SesionTerapiaDTO> ListsesionCompletoUsuario(@PathVariable("id") int id) {
         return sesionTerapiaInterface.quantitySesionesCompletobyUsuario(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

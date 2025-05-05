@@ -21,7 +21,7 @@ public class VideosTecRespiracionController {
 
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody VideosTecnicasRespiracionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         VideosTecnicasRespiracion videostecnicasrespiracion = modelMapper.map(dto, VideosTecnicasRespiracion.class);
@@ -30,7 +30,7 @@ public class VideosTecRespiracionController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody VideosTecnicasRespiracionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         VideosTecnicasRespiracion videostecnicasrespiracion = modelMapper.map(dto, VideosTecnicasRespiracion.class);
@@ -40,14 +40,14 @@ public class VideosTecRespiracionController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         videosTecRespiracionservice.eliminarVideosTecRespiracion(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<VideosTecnicasRespiracionDTO> List() {
         return videosTecRespiracionservice.listarVideosTecRespiracion().stream().map(x -> {
             ModelMapper m = new ModelMapper();

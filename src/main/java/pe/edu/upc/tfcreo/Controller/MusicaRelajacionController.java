@@ -18,7 +18,7 @@ public class MusicaRelajacionController {
     @Autowired
     private MusicaRelajacionInterface musicaRelajacionservice;
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody MusicaRelajacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MusicaRelajacion musicarelajacion = modelMapper.map(dto, MusicaRelajacion.class);
@@ -27,7 +27,7 @@ public class MusicaRelajacionController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody MusicaRelajacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MusicaRelajacion musicarelajacion = modelMapper.map(dto, MusicaRelajacion.class);
@@ -37,14 +37,14 @@ public class MusicaRelajacionController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         musicaRelajacionservice.eliminarMusicaRelax(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<MusicaRelajacionDTO> List() {
         return musicaRelajacionservice.listarMusicaRelax().stream().map(x -> {
             ModelMapper m = new ModelMapper();

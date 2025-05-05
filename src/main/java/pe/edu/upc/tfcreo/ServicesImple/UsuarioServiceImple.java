@@ -31,4 +31,9 @@ public class UsuarioServiceImple implements UsuarioServiceInterface {
     public List<Users> listarUsuario() {
         return usuarioRepository.findAll();
     }
+
+    @Override
+    public Users buscarUsuariobyusername(String username) {
+        return usuarioRepository.findOneByUsername(username);
+    }
 }

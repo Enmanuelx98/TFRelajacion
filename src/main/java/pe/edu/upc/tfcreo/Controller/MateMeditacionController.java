@@ -19,7 +19,7 @@ public class MateMeditacionController {
     private MateMeditacionServiceInterface mateMeditacionService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody MaterialMeditacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MaterialMeditacion materialMeditacion = modelMapper.map(dto, MaterialMeditacion.class);
@@ -28,7 +28,7 @@ public class MateMeditacionController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody MaterialMeditacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MaterialMeditacion materialMeditacion = modelMapper.map(dto, MaterialMeditacion.class);
@@ -38,14 +38,14 @@ public class MateMeditacionController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         mateMeditacionService.eliminarMateMeditacion(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<MaterialMeditacionDTO> List() {
         return mateMeditacionService.listarMateMeditacion().stream().map(x -> {
             ModelMapper m = new ModelMapper();

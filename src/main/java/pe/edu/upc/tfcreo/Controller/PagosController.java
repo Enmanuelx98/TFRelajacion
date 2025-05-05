@@ -19,7 +19,7 @@ public class PagosController {
     private PagosServiceInterface pagosService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody PagosDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Pagos pagos = modelMapper.map(dto, Pagos.class);
@@ -28,7 +28,7 @@ public class PagosController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody PagosDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Pagos pagos = modelMapper.map(dto, Pagos.class);
@@ -38,14 +38,14 @@ public class PagosController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         pagosService.eliminarPagos(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<PagosDTO> List() {
         return pagosService.listarPagos().stream().map(x -> {
             ModelMapper m = new ModelMapper();

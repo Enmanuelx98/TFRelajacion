@@ -21,7 +21,7 @@ public class ProgresomusicaSController {
     private ProgresomusicaSInterface progresomusicaSInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void insertar(@RequestBody ProgresomusicaSDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresomusicaS progresomusicaS = modelMapper.map(dto, ProgresomusicaS.class);
@@ -30,7 +30,7 @@ public class ProgresomusicaSController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void editar(@RequestBody ProgresomusicaSDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresomusicaS progresomusicaS = modelMapper.map(dto, ProgresomusicaS.class);
@@ -40,14 +40,14 @@ public class ProgresomusicaSController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public void eliminar(@PathVariable("id") int id) {
         progresomusicaSInterface.eliminarProgresoMusica(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<ProgresomusicaSDTO> List() {
         return progresomusicaSInterface.listarProgresoMusica().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -57,7 +57,7 @@ public class ProgresomusicaSController {
 
     //Porcentaje de progreso
     @GetMapping("/progreso/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public PorcentajeDTO obtenerProgresoMusicaDTO(@PathVariable int id) {
         double porcentaje = progresomusicaSInterface.calcularPorcentajeProgreso(id);
 
@@ -68,7 +68,7 @@ public class ProgresomusicaSController {
 
     //Lista de musica completados
     @GetMapping("/musicacompleta/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
     public List<ProgresomusicaSDTO> ListMusicaCompleto(@PathVariable int id) {
         return progresomusicaSInterface.quantityMusicaCompletoBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

@@ -19,7 +19,7 @@ public class RolController {
     private RolSeriveInterface rolSerive;
 
     //insertar
-    @PostMapping("/insertarrol")
+    @PreAuthorize("hasRole('ADMIN')")
     public void insertar(@RequestBody RoleDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Role role = modelMapper.map(dto, Role.class);
@@ -28,7 +28,7 @@ public class RolController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void editar(@RequestBody RoleDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Role role = modelMapper.map(dto, Role.class);
@@ -38,14 +38,14 @@ public class RolController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         rolSerive.eliminarRol(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','USER')")
+    @PreAuthorize("hasRole('ADMIN')")
     public List<RoleDTO> List() {
         return rolSerive.listarRol().stream().map(x -> {
             ModelMapper m = new ModelMapper();
