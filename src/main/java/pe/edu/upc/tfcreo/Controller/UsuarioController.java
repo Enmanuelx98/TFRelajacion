@@ -20,8 +20,13 @@ public class UsuarioController {
     @PostMapping
     public void insertar(@RequestBody UsuarioDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        Usuario usuario = modelMapper.map(dto, Usuario.class);
-        usuarioService.insertarUsuario(usuario);
+        Users users = modelMapper.map(dto, Users.class);
+
+        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+        String hashedPassword = encoder.encode(users.getPassword());
+        users.setPassword(hashedPassword);
+
+        usuarioService.insertarUsuario(users);
     }
 
     //modificar
