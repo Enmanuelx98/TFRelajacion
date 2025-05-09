@@ -3,32 +3,37 @@ package pe.edu.upc.tfcreo.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TecnicaMeditacion")
+@Table(name = "Tecnicameditacion")
 public class TecnicaMeditacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTecnicaMeditacion;
 
-    @Column(name = "nombreTecnicaMeditacion", length = 50, nullable = false)
+    @Column(name = "nombreTecnicaMeditacion", nullable = false, length = 50)
     private String nombreTecnicaMeditacion;
-    @Column(name = "descripcionTecnicaMeditacion", length = 500, nullable = false)
+
+    @Column(name = "descripcionTecnicaMeditacion", nullable = false, length = 200)
     private String descripcionTecnicaMeditacion;
-    @Column(name = "completadoTecnicaMeditacion")
-    private boolean completadoTecnicaMeditacion;
 
     @ManyToOne
-    @JoinColumn(name = "idTerapia")
+    @JoinColumn(name = "idterapia")
     private Terapia terapia;
 
-    public TecnicaMeditacion() {
-    }
+    public TecnicaMeditacion() {}
 
-    public TecnicaMeditacion(int idTecnicaMeditacion, String nombreTecnicaMeditacion, String descripcionTecnicaMeditacion, boolean completadoTecnicaMeditacion, Terapia terapia) {
+    public TecnicaMeditacion(String descripcionTecnicaMeditacion, int idTecnicaMeditacion, String nombreTecnicaMeditacion, Terapia terapia) {
+        this.descripcionTecnicaMeditacion = descripcionTecnicaMeditacion;
         this.idTecnicaMeditacion = idTecnicaMeditacion;
         this.nombreTecnicaMeditacion = nombreTecnicaMeditacion;
-        this.descripcionTecnicaMeditacion = descripcionTecnicaMeditacion;
-        this.completadoTecnicaMeditacion = completadoTecnicaMeditacion;
         this.terapia = terapia;
+    }
+
+    public String getDescripcionTecnicaMeditacion() {
+        return descripcionTecnicaMeditacion;
+    }
+
+    public void setDescripcionTecnicaMeditacion(String descripcionTecnicaMeditacion) {
+        this.descripcionTecnicaMeditacion = descripcionTecnicaMeditacion;
     }
 
     public int getIdTecnicaMeditacion() {
@@ -45,22 +50,6 @@ public class TecnicaMeditacion {
 
     public void setNombreTecnicaMeditacion(String nombreTecnicaMeditacion) {
         this.nombreTecnicaMeditacion = nombreTecnicaMeditacion;
-    }
-
-    public String getDescripcionTecnicaMeditacion() {
-        return descripcionTecnicaMeditacion;
-    }
-
-    public void setDescripcionTecnicaMeditacion(String descripcionTecnicaMeditacion) {
-        this.descripcionTecnicaMeditacion = descripcionTecnicaMeditacion;
-    }
-
-    public boolean isCompletadoTecnicaMeditacion() {
-        return completadoTecnicaMeditacion;
-    }
-
-    public void setCompletadoTecnicaMeditacion(boolean completadoTecnicaMeditacion) {
-        this.completadoTecnicaMeditacion = completadoTecnicaMeditacion;
     }
 
     public Terapia getTerapia() {

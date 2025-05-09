@@ -2,22 +2,23 @@ package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
 
+
+
 @Entity
-@Table(name = "musicaCategoria")
+@Table(name = "Musicacategoria")
 public class MusicaCategoria {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMusicaCategoria;
 
-    @Column(name = "nombreMusicaCategoria", length = 50, unique = true)
-    private String nombreMusicaCategoria;
+    @Column(name = "nombreCategoria", nullable = false, length = 50)
+    private String nombreCategoria;
 
-    public MusicaCategoria() {
-    }
+    public MusicaCategoria() {}
 
-    public MusicaCategoria(String nombreMusicaCategoria, int idMusicaCategoria) {
-        this.nombreMusicaCategoria = nombreMusicaCategoria;
+    public MusicaCategoria(int idMusicaCategoria, String nombreCategoria) {
         this.idMusicaCategoria = idMusicaCategoria;
+        this.nombreCategoria = nombreCategoria;
     }
 
     public int getIdMusicaCategoria() {
@@ -28,11 +29,11 @@ public class MusicaCategoria {
         this.idMusicaCategoria = idMusicaCategoria;
     }
 
-    public String getNombreMusicaCategoria() {
-        return nombreMusicaCategoria;
+    public String getNombreCategoria() {
+        return nombreCategoria;
     }
 
-    public void setNombreMusicaCategoria(String nombreMusicaCategoria) {
-        this.nombreMusicaCategoria = nombreMusicaCategoria;
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
     }
 }

@@ -1,0 +1,12 @@
+package pe.edu.upc.tfcreo.servicesinterface;
+
+import pe.edu.upc.tfcreo.entities.TecnicaMeditacion;
+
+import java.util.List;
+
+public interface TecMeditacionServiceInterface {
+    public void insertarTecMeditacion(TecnicaMeditacion tecnicameditacion);
+    public void updateTecMeditacion(TecnicaMeditacion tecnicameditacion);
+    public void eliminarTecMeditacion(int id);
+    public List<TecnicaMeditacion> listarTecMeditacion();
+}

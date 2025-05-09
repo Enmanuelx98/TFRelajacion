@@ -3,17 +3,16 @@ package pe.edu.upc.tfcreo.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "playlists")
+@Table(name = "Playlist")
 public class Playlist {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPlaylist;
-    @Column(name = "nombrePlaylist", length = 50, nullable = false)
+
+    @Column(name = "nombrePlaylist", nullable = false, length = 50)
     private String nombrePlaylist;
 
-
-    public Playlist() {
-    }
+    public Playlist() {}
 
     public Playlist(int idPlaylist, String nombrePlaylist) {
         this.idPlaylist = idPlaylist;

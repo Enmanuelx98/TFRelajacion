@@ -1,19 +1,22 @@
 package pe.edu.upc.tfcreo.dtos;
 
+
 import pe.edu.upc.tfcreo.entities.Terapia;
 
+
 public class TecnicaMeditacionDTO {
-
     private int idTecnicaMeditacion;
-
     private String nombreTecnicaMeditacion;
-
     private String descripcionTecnicaMeditacion;
-
-    private boolean completadoTecnicaMeditacion;
-
     private Terapia terapia;
 
+    public String getDescripcionTecnicaMeditacion() {
+        return descripcionTecnicaMeditacion;
+    }
+
+    public void setDescripcionTecnicaMeditacion(String descripcionTecnicaMeditacion) {
+        this.descripcionTecnicaMeditacion = descripcionTecnicaMeditacion;
+    }
 
     public int getIdTecnicaMeditacion() {
         return idTecnicaMeditacion;
@@ -29,22 +32,6 @@ public class TecnicaMeditacionDTO {
 
     public void setNombreTecnicaMeditacion(String nombreTecnicaMeditacion) {
         this.nombreTecnicaMeditacion = nombreTecnicaMeditacion;
-    }
-
-    public String getDescripcionTecnicaMeditacion() {
-        return descripcionTecnicaMeditacion;
-    }
-
-    public void setDescripcionTecnicaMeditacion(String descripcionTecnicaMeditacion) {
-        this.descripcionTecnicaMeditacion = descripcionTecnicaMeditacion;
-    }
-
-    public boolean isCompletadoTecnicaMeditacion() {
-        return completadoTecnicaMeditacion;
-    }
-
-    public void setCompletadoTecnicaMeditacion(boolean completadoTecnicaMeditacion) {
-        this.completadoTecnicaMeditacion = completadoTecnicaMeditacion;
     }
 
     public Terapia getTerapia() {

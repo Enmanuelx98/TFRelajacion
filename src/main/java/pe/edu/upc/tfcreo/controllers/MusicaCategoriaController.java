@@ -2,51 +2,53 @@ package pe.edu.upc.tfcreo.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.dtos.MusicaCategoriaDTO;
 import pe.edu.upc.tfcreo.entities.MusicaCategoria;
-import pe.edu.upc.tfcreo.servicesinterface.IMusicaCategoriaService;
+import pe.edu.upc.tfcreo.servicesinterface.MusicaCategoriaInterface;
 
 import java.util.List;
 import java.util.stream.Collectors;
-
 @RestController
-@RequestMapping("/Musicacategorias")
+@RequestMapping("/musicacategoria")
 public class MusicaCategoriaController {
-
     @Autowired
-    private IMusicaCategoriaService musicacS;
+    private MusicaCategoriaInterface musicaCategoriaservice;
 
     //insertar
-    @PostMapping("insertarmusicacategoria")
-    public void insertarMusicaCategoria(@RequestBody MusicaCategoriaDTO dto) {
+    @PostMapping("/insertarmusicacategoria")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void insertar(@RequestBody MusicaCategoriaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        MusicaCategoria musicaCategoria = modelMapper.map(dto, MusicaCategoria.class);
-        musicacS.insertaMusicaCategoria(musicaCategoria);
+        MusicaCategoria musicacategoria = modelMapper.map(dto, MusicaCategoria.class);
+        musicaCategoriaservice.insertarMusicaCategoria(musicacategoria);
     }
 
     //modificar
     @PutMapping("/modificarmusicacategoria")
-    public void modificarMusicaCategoria(@RequestBody MusicaCategoriaDTO dto) {
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void editar(@RequestBody MusicaCategoriaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        MusicaCategoria musicaCategoria = modelMapper.map(dto, MusicaCategoria.class);
-        musicacS.updateMusicaCategoria(musicaCategoria);
+        MusicaCategoria musicacategoria = modelMapper.map(dto, MusicaCategoria.class);
+        musicaCategoriaservice.updateMusicaCategoria(musicacategoria);
+
     }
 
-    //eliminar
+    //delete
     @DeleteMapping("/{id}")
-    public void eliminarMusicaCategoria(@PathVariable("id") int id){
-        musicacS.eliminarMusicaCategoria(id);
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void eliminar(@PathVariable("id") int id) {
+        musicaCategoriaservice.eliminarMusicaCategoria(id);
     }
 
     //listar
     @GetMapping("/listarmusicacategoria")
-    public List<MusicaCategoriaDTO> listarMusicaCategorias(){
-        return musicacS.listarMusicaCategoria().stream().map(x->{
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public List<MusicaCategoriaDTO> List() {
+        return musicaCategoriaservice.listarMusicaCategoria().stream().map(x -> {
             ModelMapper m = new ModelMapper();
-            return m.map(x,MusicaCategoriaDTO.class);
+            return m.map(x, MusicaCategoriaDTO.class);
         }).collect(Collectors.toList());
     }
-
 }
-

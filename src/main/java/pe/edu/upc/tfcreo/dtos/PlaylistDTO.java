@@ -1,9 +1,9 @@
 package pe.edu.upc.tfcreo.dtos;
 
+
+
 public class PlaylistDTO {
-
     private int idPlaylist;
-
     private String nombrePlaylist;
 
     public int getIdPlaylist() {

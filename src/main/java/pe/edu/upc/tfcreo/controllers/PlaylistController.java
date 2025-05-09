@@ -2,50 +2,54 @@ package pe.edu.upc.tfcreo.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.dtos.PlaylistDTO;
 import pe.edu.upc.tfcreo.entities.Playlist;
-import pe.edu.upc.tfcreo.servicesinterface.IPlaylistService;
+import pe.edu.upc.tfcreo.servicesinterface.PlaylistServiceInterface;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Playlists")
+@RequestMapping("/playlist")
 public class PlaylistController {
-
     @Autowired
-    private IPlaylistService playlistS;
+    private PlaylistServiceInterface playlistServiceinter;
 
     //insertar
-    @PostMapping
-    public void insertarPlaylist(@RequestBody PlaylistDTO dto) {
+    @PostMapping("/insertarplaylist")
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public void insertar(@RequestBody PlaylistDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Playlist playlist = modelMapper.map(dto, Playlist.class);
-        playlistS.insertarPlaylist(playlist);
+        playlistServiceinter.insertarPlaylist(playlist);
     }
 
     //modificar
-    @PutMapping
-    public void modificarPlaylist(@RequestBody PlaylistDTO dto) {
+    @PutMapping("/modificarplaylist")
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public void editar(@RequestBody PlaylistDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Playlist playlist = modelMapper.map(dto, Playlist.class);
-        playlistS.updatePlaylist(playlist);
+        playlistServiceinter.updatePlaylist(playlist);
+
     }
 
-    //eliminar
+    //delete
     @DeleteMapping("/{id}")
-    public void eliminarPlaylist(@PathVariable ("id")int id) {
-        playlistS.eliminarPlaylist(id);
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public void eliminar(@PathVariable("id") int id) {
+        playlistServiceinter.eliminarPlaylist(id);
     }
 
     //listar
-    @GetMapping
-    public List<PlaylistDTO> listarPlaylists() {
-        return playlistS.listarPlaylist().stream().map(x ->{
-            ModelMapper m=new ModelMapper();
-            return m.map(x,PlaylistDTO.class);
+    @GetMapping("/listarplaylist")
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public List<PlaylistDTO> List() {
+        return playlistServiceinter.listarPlaylist().stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, PlaylistDTO.class);
         }).collect(Collectors.toList());
     }
-
 }

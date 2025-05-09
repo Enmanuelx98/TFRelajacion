@@ -3,41 +3,33 @@ package pe.edu.upc.tfcreo.entities;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "billeteraElectronicas")
+@Table(name = "Billeteraelectronica")
 public class BilleteraElectronica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idBilleteraElectronica;
 
-    @Column(name = "companiaBilleteraElectronica", length = 50, nullable = false)
+    @Column(name = "tipoPago", nullable = false, length = 50)
     private String companiaBilleteraElectronica;
-    @Column(name = "nombreTitularBilleteraElectronica", length = 100, nullable = false)
-    private String nombreTitularBilleteraElectronica;
-    @Column(name = "evidenciaBilleteraElectronica", length = 200, nullable = false)
+
+    @Column(name = "imagenQRBilleteraElectronica", nullable = false, length = 200)
+    private String imagenQRBilleteraElectronica;
+
+    @Column(name = "evidenciaBilleteraElectronica", nullable = false, length = 200)
     private String evidenciaBilleteraElectronica;
 
     @ManyToOne
-    @JoinColumn(name = "idPagos")
+    @JoinColumn(name = "idpagos")
     private Pagos pagos;
 
+    public BilleteraElectronica() {}
 
-    public BilleteraElectronica() {
-    }
-
-    public BilleteraElectronica(int idBilleteraElectronica, String companiaBilleteraElectronica, String nombreTitularBilleteraElectronica, String evidenciaBilleteraElectronica, Pagos pagos) {
-        this.idBilleteraElectronica = idBilleteraElectronica;
+    public BilleteraElectronica(String companiaBilleteraElectronica, String evidenciaBilleteraElectronica, int idBilleteraElectronica, String imagenQRBilleteraElectronica, Pagos pagos) {
         this.companiaBilleteraElectronica = companiaBilleteraElectronica;
-        this.nombreTitularBilleteraElectronica = nombreTitularBilleteraElectronica;
         this.evidenciaBilleteraElectronica = evidenciaBilleteraElectronica;
-        this.pagos = pagos;
-    }
-
-    public int getIdBilleteraElectronica() {
-        return idBilleteraElectronica;
-    }
-
-    public void setIdBilleteraElectronica(int idBilleteraElectronica) {
         this.idBilleteraElectronica = idBilleteraElectronica;
+        this.imagenQRBilleteraElectronica = imagenQRBilleteraElectronica;
+        this.pagos = pagos;
     }
 
     public String getCompaniaBilleteraElectronica() {
@@ -48,20 +40,28 @@ public class BilleteraElectronica {
         this.companiaBilleteraElectronica = companiaBilleteraElectronica;
     }
 
-    public String getNombreTitularBilleteraElectronica() {
-        return nombreTitularBilleteraElectronica;
-    }
-
-    public void setNombreTitularBilleteraElectronica(String nombreTitularBilleteraElectronica) {
-        this.nombreTitularBilleteraElectronica = nombreTitularBilleteraElectronica;
-    }
-
     public String getEvidenciaBilleteraElectronica() {
         return evidenciaBilleteraElectronica;
     }
 
     public void setEvidenciaBilleteraElectronica(String evidenciaBilleteraElectronica) {
         this.evidenciaBilleteraElectronica = evidenciaBilleteraElectronica;
+    }
+
+    public int getIdBilleteraElectronica() {
+        return idBilleteraElectronica;
+    }
+
+    public void setIdBilleteraElectronica(int idBilleteraElectronica) {
+        this.idBilleteraElectronica = idBilleteraElectronica;
+    }
+
+    public String getImagenQRBilleteraElectronica() {
+        return imagenQRBilleteraElectronica;
+    }
+
+    public void setImagenQRBilleteraElectronica(String imagenQRBilleteraElectronica) {
+        this.imagenQRBilleteraElectronica = imagenQRBilleteraElectronica;
     }
 
     public Pagos getPagos() {

@@ -2,83 +2,85 @@ package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
 
+
 @Entity
-@Table(name = "musicaRelajacion")
+@Table(name = "Musicarelajacion")
 public class MusicaRelajacion {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int idMusicaRelajacion;
+    private int idMusica;
 
-    @Column(name = "nombreMusicaRelajacion", length = 50, nullable = false)
-    private String nombreMusicaRelajacion;
-    @Column(name = "descripcionMusicaRelajacion", length = 200, nullable = false)
-    private String descripcionMusicaRelajacion;
-    @Column(name = "linkMusicaRelajacion", length = 500, nullable = false)
-    private String linkMusicaRelajacion;
+    @Column(name = "nombreMusica", nullable = false, length = 50)
+    private String nombreMusica;
+
+    @Column(name = "linkMusica", nullable = false, length = 200)
+    private String linkMusica;
+
+    @Column(name = "descripcionMusica", nullable = false, length = 200)
+    private String descripcionMusica;
 
     @ManyToOne
-    @JoinColumn(name = "idTerapia")
+    @JoinColumn(name = "idterapia")
     private Terapia terapia;
-
+    
     @ManyToOne
-    @JoinColumn(name = "idPlaylist")
+    @JoinColumn(name = "idplaylist")
     private Playlist playlist;
 
     @ManyToOne
-    @JoinColumn(name = "idMusicaCategoria")
+    @JoinColumn(name = "idmusicaCategoria")
     private MusicaCategoria musicaCategoria;
 
-    public MusicaRelajacion() {
-    }
+    public MusicaRelajacion() {}
 
-    public MusicaRelajacion(int idMusicaRelajacion, String nombreMusicaRelajacion, String descripcionMusicaRelajacion, String linkMusicaRelajacion, Terapia terapia, Playlist playlist, MusicaCategoria musicaCategoria) {
-        this.idMusicaRelajacion = idMusicaRelajacion;
-        this.nombreMusicaRelajacion = nombreMusicaRelajacion;
-        this.descripcionMusicaRelajacion = descripcionMusicaRelajacion;
-        this.linkMusicaRelajacion = linkMusicaRelajacion;
+    public MusicaRelajacion(String descripcionMusica, int idMusica, String linkMusica, MusicaCategoria musicaCategoria, String nombreMusica, Terapia terapia, Playlist playlist) {
+        this.descripcionMusica = descripcionMusica;
+        this.idMusica = idMusica;
+        this.linkMusica = linkMusica;
+        this.musicaCategoria = musicaCategoria;
+        this.nombreMusica = nombreMusica;
         this.terapia = terapia;
         this.playlist = playlist;
+    }
+
+    public String getDescripcionMusica() {
+        return descripcionMusica;
+    }
+
+    public void setDescripcionMusica(String descripcionMusica) {
+        this.descripcionMusica = descripcionMusica;
+    }
+
+    public int getIdMusica() {
+        return idMusica;
+    }
+
+    public void setIdMusica(int idMusica) {
+        this.idMusica = idMusica;
+    }
+
+    public String getLinkMusica() {
+        return linkMusica;
+    }
+
+    public void setLinkMusica(String linkMusica) {
+        this.linkMusica = linkMusica;
+    }
+
+    public MusicaCategoria getMusicaCategoria() {
+        return musicaCategoria;
+    }
+
+    public void setMusicaCategoria(MusicaCategoria musicaCategoria) {
         this.musicaCategoria = musicaCategoria;
     }
 
-    public int getIdMusicaRelajacion() {
-        return idMusicaRelajacion;
+    public String getNombreMusica() {
+        return nombreMusica;
     }
 
-    public void setIdMusicaRelajacion(int idMusicaRelajacion) {
-        this.idMusicaRelajacion = idMusicaRelajacion;
-    }
-
-    public String getNombreMusicaRelajacion() {
-        return nombreMusicaRelajacion;
-    }
-
-    public void setNombreMusicaRelajacion(String nombreMusicaRelajacion) {
-        this.nombreMusicaRelajacion = nombreMusicaRelajacion;
-    }
-
-    public String getDescripcionMusicaRelajacion() {
-        return descripcionMusicaRelajacion;
-    }
-
-    public void setDescripcionMusicaRelajacion(String descripcionMusicaRelajacion) {
-        this.descripcionMusicaRelajacion = descripcionMusicaRelajacion;
-    }
-
-    public String getLinkMusicaRelajacion() {
-        return linkMusicaRelajacion;
-    }
-
-    public void setLinkMusicaRelajacion(String linkMusicaRelajacion) {
-        this.linkMusicaRelajacion = linkMusicaRelajacion;
-    }
-
-    public Terapia getTerapia() {
-        return terapia;
-    }
-
-    public void setTerapia(Terapia terapia) {
-        this.terapia = terapia;
+    public void setNombreMusica(String nombreMusica) {
+        this.nombreMusica = nombreMusica;
     }
 
     public Playlist getPlaylist() {
@@ -89,12 +91,11 @@ public class MusicaRelajacion {
         this.playlist = playlist;
     }
 
-    public MusicaCategoria getMusicaCategoria() {
-        return musicaCategoria;
+    public Terapia getTerapia() {
+        return terapia;
     }
 
-    public void setMusicaCategoria(MusicaCategoria musicaCategoria) {
-        this.musicaCategoria = musicaCategoria;
+    public void setTerapia(Terapia terapia) {
+        this.terapia = terapia;
     }
 }
-

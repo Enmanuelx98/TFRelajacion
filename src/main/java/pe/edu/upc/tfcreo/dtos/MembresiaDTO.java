@@ -1,17 +1,41 @@
 package pe.edu.upc.tfcreo.dtos;
 
+
+import pe.edu.upc.tfcreo.entities.Usuario;
+
 import java.time.LocalDate;
 
+
 public class MembresiaDTO {
-
     private int idMembresia;
+    private LocalDate fechainicioMembresia;
+    private LocalDate fechafinalMembresia;
+    private Boolean estadoMembresia;
+    private Usuario usuario;
 
-    private LocalDate fechaInicioMenbresia;
+    public Boolean getEstadoMembresia() {
+        return estadoMembresia;
+    }
 
-    private LocalDate fechaFinMenbresia;
+    public void setEstadoMembresia(Boolean estadoMembresia) {
+        this.estadoMembresia = estadoMembresia;
+    }
 
-    private Boolean activadoMembresia;
+    public LocalDate getFechafinalMembresia() {
+        return fechafinalMembresia;
+    }
 
+    public void setFechafinalMembresia(LocalDate fechafinalMembresia) {
+        this.fechafinalMembresia = fechafinalMembresia;
+    }
+
+    public LocalDate getFechainicioMembresia() {
+        return fechainicioMembresia;
+    }
+
+    public void setFechainicioMembresia(LocalDate fechainicioMembresia) {
+        this.fechainicioMembresia = fechainicioMembresia;
+    }
 
     public int getIdMembresia() {
         return idMembresia;
@@ -21,27 +45,11 @@ public class MembresiaDTO {
         this.idMembresia = idMembresia;
     }
 
-    public LocalDate getFechaInicioMenbresia() {
-        return fechaInicioMenbresia;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setFechaInicioMenbresia(LocalDate fechaInicioMenbresia) {
-        this.fechaInicioMenbresia = fechaInicioMenbresia;
-    }
-
-    public LocalDate getFechaFinMenbresia() {
-        return fechaFinMenbresia;
-    }
-
-    public void setFechaFinMenbresia(LocalDate fechaFinMenbresia) {
-        this.fechaFinMenbresia = fechaFinMenbresia;
-    }
-
-    public Boolean getActivadoMembresia() {
-        return activadoMembresia;
-    }
-
-    public void setActivadoMembresia(Boolean activadoMembresia) {
-        this.activadoMembresia = activadoMembresia;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

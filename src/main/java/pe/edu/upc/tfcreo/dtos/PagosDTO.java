@@ -1,22 +1,22 @@
 package pe.edu.upc.tfcreo.dtos;
 
-import pe.edu.upc.tfcreo.entities.Membresia;
 
-import java.time.LocalDateTime;
+import pe.edu.upc.tfcreo.entities.Usuario;
+
+import java.time.LocalDate;
+
 
 public class PagosDTO {
 
     private int idPagos;
 
-    private String tipoPagos;
+    private String tipoPago;
 
-    private String numeroFacturaPagos;
-
-    private LocalDateTime fechaPagos;
+    private LocalDate fechaPago;
 
     private double montoPagos;
 
-    private Membresia membresia;
+    private Usuario usuario;
 
     public int getIdPagos() {
         return idPagos;
@@ -26,28 +26,20 @@ public class PagosDTO {
         this.idPagos = idPagos;
     }
 
-    public String getTipoPagos() {
-        return tipoPagos;
+    public String getTipoPago() {
+        return tipoPago;
     }
 
-    public void setTipoPagos(String tipoPagos) {
-        this.tipoPagos = tipoPagos;
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
     }
 
-    public String getNumeroFacturaPagos() {
-        return numeroFacturaPagos;
+    public LocalDate getFechaPago() {
+        return fechaPago;
     }
 
-    public void setNumeroFacturaPagos(String numeroFacturaPagos) {
-        this.numeroFacturaPagos = numeroFacturaPagos;
-    }
-
-    public LocalDateTime getFechaPagos() {
-        return fechaPagos;
-    }
-
-    public void setFechaPagos(LocalDateTime fechaPagos) {
-        this.fechaPagos = fechaPagos;
+    public void setFechaPago(LocalDate fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public double getMontoPagos() {
@@ -58,11 +50,11 @@ public class PagosDTO {
         this.montoPagos = montoPagos;
     }
 
-    public Membresia getMembresia() {
-        return membresia;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setMembresia(Membresia membresia) {
-        this.membresia = membresia;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

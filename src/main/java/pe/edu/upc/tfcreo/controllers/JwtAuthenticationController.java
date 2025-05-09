@@ -1,6 +1,5 @@
 package pe.edu.upc.tfcreo.controllers;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -17,6 +16,8 @@ import pe.edu.upc.tfcreo.securities.JwtResponse;
 import pe.edu.upc.tfcreo.securities.JwtTokenUtil;
 import pe.edu.upc.tfcreo.servicesimplements.JwtUserDetailsService;
 
+
+//Clase 3
 @RestController
 @CrossOrigin
 public class JwtAuthenticationController {
@@ -30,8 +31,8 @@ public class JwtAuthenticationController {
 
     @PostMapping("/login")
     public ResponseEntity<JwtResponse> login(@RequestBody JwtRequest req) throws Exception {
-        authenticate(req.getCorreoUsuarios(), req.getContrasenaUsuarios());
-        final UserDetails userDetails = userDetailsService.loadUserByUsername(req.getCorreoUsuarios());
+        authenticate(req.getUsername(), req.getPassword());
+        final UserDetails userDetails = userDetailsService.loadUserByUsername(req.getUsername());
         final String token = jwtTokenUtil.generateToken(userDetails);
         return ResponseEntity.ok(new JwtResponse(token));
     }

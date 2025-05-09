@@ -1,17 +1,18 @@
 package pe.edu.upc.tfcreo.dtos;
 
-import java.time.LocalDate;
 
 public class TerapiaDTO {
-
     private int idTerapia;
+    private String tipoTerapia;
+    private String descripcionTerapia;
 
-    private String nomnreTerapia;
+    public String getDescripcionTerapia() {
+        return descripcionTerapia;
+    }
 
-    private LocalDate fechaAsignacionTerapia;
-
-    private Boolean completadoTerapia;
-
+    public void setDescripcionTerapia(String descripcionTerapia) {
+        this.descripcionTerapia = descripcionTerapia;
+    }
 
     public int getIdTerapia() {
         return idTerapia;
@@ -21,27 +22,11 @@ public class TerapiaDTO {
         this.idTerapia = idTerapia;
     }
 
-    public String getNomnreTerapia() {
-        return nomnreTerapia;
+    public String getTipoTerapia() {
+        return tipoTerapia;
     }
 
-    public void setNomnreTerapia(String nomnreTerapia) {
-        this.nomnreTerapia = nomnreTerapia;
-    }
-
-    public LocalDate getFechaAsignacionTerapia() {
-        return fechaAsignacionTerapia;
-    }
-
-    public void setFechaAsignacionTerapia(LocalDate fechaAsignacionTerapia) {
-        this.fechaAsignacionTerapia = fechaAsignacionTerapia;
-    }
-
-    public Boolean getCompletadoTerapia() {
-        return completadoTerapia;
-    }
-
-    public void setCompletadoTerapia(Boolean completadoTerapia) {
-        this.completadoTerapia = completadoTerapia;
+    public void setTipoTerapia(String tipoTerapia) {
+        this.tipoTerapia = tipoTerapia;
     }
 }

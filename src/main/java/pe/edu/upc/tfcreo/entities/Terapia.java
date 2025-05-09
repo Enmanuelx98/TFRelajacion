@@ -2,7 +2,6 @@ package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
 
-import java.time.LocalDate;
 
 @Entity
 @Table(name = "Terapia")
@@ -10,21 +9,27 @@ public class Terapia {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idTerapia;
-    @Column(name = "nombreTerapia", length = 50, nullable = false)
-    private String nomnreTerapia;
-    @Column(name = "fechaAsignacionTerapia")
-    private LocalDate fechaAsignacionTerapia;
-    @Column(name = "completadoTerapia", nullable = false)
-    private Boolean completadoTerapia;
 
-    public Terapia() {
+    @Column(name = "tipoTerapia", nullable = false, length = 50)
+    private String tipoTerapia;
+
+    @Column(name = "descripcionTerapia", nullable = false, length = 200)
+    private String descripcionTerapia;
+
+    public Terapia() {}
+
+    public Terapia(String descripcionTerapia, int idTerapia, String tipoTerapia) {
+        this.descripcionTerapia = descripcionTerapia;
+        this.idTerapia = idTerapia;
+        this.tipoTerapia = tipoTerapia;
     }
 
-    public Terapia(int idTerapia, String nomnreTerapia, LocalDate fechaAsignacionTerapia, Boolean completadoTerapia) {
-        this.idTerapia = idTerapia;
-        this.nomnreTerapia = nomnreTerapia;
-        this.fechaAsignacionTerapia = fechaAsignacionTerapia;
-        this.completadoTerapia = completadoTerapia;
+    public String getDescripcionTerapia() {
+        return descripcionTerapia;
+    }
+
+    public void setDescripcionTerapia(String descripcionTerapia) {
+        this.descripcionTerapia = descripcionTerapia;
     }
 
     public int getIdTerapia() {
@@ -35,28 +40,12 @@ public class Terapia {
         this.idTerapia = idTerapia;
     }
 
-    public String getNomnreTerapia() {
-        return nomnreTerapia;
+    public String getTipoTerapia() {
+        return tipoTerapia;
     }
 
-    public void setNomnreTerapia(String nomnreTerapia) {
-        this.nomnreTerapia = nomnreTerapia;
+    public void setTipoTerapia(String tipoTerapia) {
+        this.tipoTerapia = tipoTerapia;
     }
 
-    public LocalDate getFechaAsignacionTerapia() {
-        return fechaAsignacionTerapia;
-    }
-
-    public void setFechaAsignacionTerapia(LocalDate fechaAsignacionTerapia) {
-        this.fechaAsignacionTerapia = fechaAsignacionTerapia;
-    }
-
-    public Boolean getCompletadoTerapia() {
-        return completadoTerapia;
-    }
-
-    public void setCompletadoTerapia(Boolean completadoTerapia) {
-        this.completadoTerapia = completadoTerapia;
-    }
 }
-

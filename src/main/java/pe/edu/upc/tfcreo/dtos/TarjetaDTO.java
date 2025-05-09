@@ -1,20 +1,32 @@
 package pe.edu.upc.tfcreo.dtos;
 
+
 import pe.edu.upc.tfcreo.entities.Pagos;
 
+
 public class TarjetaDTO {
-
     private int idTarjeta;
-
     private String nombreTitularTarjeta;
-
     private String numeroTarjeta;
-
-    private int cvvTarjeta;
-
-    private String fechaCaducidadTarjeta;
-
+    private String cvvTarjeta;
+    private String fechacaducidadTarjeta;
     private Pagos pagos;
+
+    public String getCvvTarjeta() {
+        return cvvTarjeta;
+    }
+
+    public void setCvvTarjeta(String cvvTarjeta) {
+        this.cvvTarjeta = cvvTarjeta;
+    }
+
+    public String getFechacaducidadTarjeta() {
+        return fechacaducidadTarjeta;
+    }
+
+    public void setFechacaducidadTarjeta(String fechacaducidadTarjeta) {
+        this.fechacaducidadTarjeta = fechacaducidadTarjeta;
+    }
 
     public int getIdTarjeta() {
         return idTarjeta;
@@ -38,22 +50,6 @@ public class TarjetaDTO {
 
     public void setNumeroTarjeta(String numeroTarjeta) {
         this.numeroTarjeta = numeroTarjeta;
-    }
-
-    public int getCvvTarjeta() {
-        return cvvTarjeta;
-    }
-
-    public void setCvvTarjeta(int cvvTarjeta) {
-        this.cvvTarjeta = cvvTarjeta;
-    }
-
-    public String getFechaCaducidadTarjeta() {
-        return fechaCaducidadTarjeta;
-    }
-
-    public void setFechaCaducidadTarjeta(String fechaCaducidadTarjeta) {
-        this.fechaCaducidadTarjeta = fechaCaducidadTarjeta;
     }
 
     public Pagos getPagos() {

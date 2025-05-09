@@ -2,49 +2,55 @@ package pe.edu.upc.tfcreo.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.dtos.TerapiaDTO;
 import pe.edu.upc.tfcreo.entities.Terapia;
-import pe.edu.upc.tfcreo.servicesinterface.ITerapiaService;
+import pe.edu.upc.tfcreo.servicesinterface.TerapiaServiceInterface;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Terapias")
+@RequestMapping("/terapia")
 public class TerapiaController {
-
     @Autowired
-    private ITerapiaService terapiaS;
+    private TerapiaServiceInterface terapiaService;
 
     //insertar
     @PostMapping("/insertarterapia")
-    public void insertarTerapia(@RequestBody TerapiaDTO dto) {
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void insertar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
-        terapiaS.insertarTerapia(terapia);
+        terapiaService.insertarTerapia(terapia);
     }
 
     //modificar
     @PutMapping("/modificarterapia")
-    public void modificarTerapia(@RequestBody TerapiaDTO dto) {
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void editar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
-        terapiaS.updateTerapia(terapia);
+        terapiaService.updateTerapia(terapia);
+
     }
 
-    //eliminar
+    //delete
     @DeleteMapping("/{id}")
-    public void eliminarTerapia(@PathVariable("id") int id) {terapiaS.eliminarTerapia(id);}
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void eliminar(@PathVariable("id") int id) {
+        terapiaService.eliminarTerapia(id);
+    }
 
     //listar
     @GetMapping("/listarterapia")
-    public List<TerapiaDTO> listarTerapia() {
-        return terapiaS.listarTerapia().stream().map(x-> {
-            ModelMapper m=new ModelMapper();
-            return m.map(x,TerapiaDTO.class);
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public List<TerapiaDTO> List() {
+        return terapiaService.listarTerapia().stream().map(x -> {
+            ModelMapper m = new ModelMapper();
+            return m.map(x, TerapiaDTO.class);
         }).collect(Collectors.toList());
     }
-
-
 }
+

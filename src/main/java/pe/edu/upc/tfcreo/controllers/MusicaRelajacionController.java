@@ -2,50 +2,53 @@ package pe.edu.upc.tfcreo.controllers;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.tfcreo.dtos.MusicaCategoriaDTO;
 import pe.edu.upc.tfcreo.dtos.MusicaRelajacionDTO;
 import pe.edu.upc.tfcreo.entities.MusicaRelajacion;
-import pe.edu.upc.tfcreo.servicesinterface.IMusicaRelajacionService;
+import pe.edu.upc.tfcreo.servicesinterface.MusicaRelajacionInterface;
 
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/Musicarelajacion")
+@RequestMapping("/musicarelax")
 public class MusicaRelajacionController {
-
     @Autowired
-    private IMusicaRelajacionService musicarS;
+    private MusicaRelajacionInterface musicaRelajacionservice;
 
-    //registrar
-    @PostMapping("insertarmusicarelajacion")
-    public void insertarMusicaRelajacion(MusicaCategoriaDTO dto){
+    @PostMapping("/insertarmusicarelax")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void insertar(@RequestBody MusicaRelajacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        MusicaRelajacion musicaRelajacion = modelMapper.map(dto, MusicaRelajacion.class);
-        musicarS.insertarMusicaRelajacion(musicaRelajacion);
+        MusicaRelajacion musicarelajacion = modelMapper.map(dto, MusicaRelajacion.class);
+        musicaRelajacionservice.insertarMusicaRelax(musicarelajacion);
     }
 
     //modificar
-    @PutMapping("/modificarmusicarelajacion")
-    public void modificarMusicaRelajacion(MusicaCategoriaDTO dto){
+    @PutMapping("/modificarmusicarelax")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void editar(@RequestBody MusicaRelajacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
-        MusicaRelajacion musicaRelajacion = modelMapper.map(dto, MusicaRelajacion.class);
-        musicarS.updateMusicaRelajacion(musicaRelajacion);
+        MusicaRelajacion musicarelajacion = modelMapper.map(dto, MusicaRelajacion.class);
+        musicaRelajacionservice.updateMusicaRelax(musicarelajacion);
+
     }
 
-    //eliminar
-    @DeleteMapping
-    public void eliminarMusicaRelajacion(@PathVariable("id")int id){
-        musicarS.eliminarMusicaRelajacion(id);
+    //delete
+    @DeleteMapping("/{id}")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public void eliminar(@PathVariable("id") int id) {
+        musicaRelajacionservice.eliminarMusicaRelax(id);
     }
 
-    @GetMapping("/listarmusicarelajacion")
-    public List<MusicaRelajacionDTO> listarMusicaRelajacion(){
-        return musicarS.listarMusicaRelajacion().stream().map(x->{
-            ModelMapper m=new ModelMapper();
+    //listar
+    @GetMapping("/listarmusicarelax")
+    @PreAuthorize("hasAnyAuthority('CLIENT','ADMIN','SUDS')")
+    public List<MusicaRelajacionDTO> List() {
+        return musicaRelajacionservice.listarMusicaRelax().stream().map(x -> {
+            ModelMapper m = new ModelMapper();
             return m.map(x, MusicaRelajacionDTO.class);
         }).collect(Collectors.toList());
     }
-
 }

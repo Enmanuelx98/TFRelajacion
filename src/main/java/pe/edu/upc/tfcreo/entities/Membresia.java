@@ -1,33 +1,61 @@
 package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
-import javax.swing.text.StyledEditorKit;
+
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "membresia")
+@Table(name = "Membresia")
 public class Membresia {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idMembresia;
 
-    @Column(name = "fechaInicioMembresia")
-    private LocalDate fechaInicioMenbresia;
-    @Column(name = "fechaFinMembresia")
-    private LocalDate fechaFinMenbresia;
-    @Column(name = "activadoMembresia", nullable = false)
-    private Boolean activadoMembresia;
+    @Column(name = "fechainicioMembresia", nullable = false)
+    private LocalDate fechainicioMembresia;
 
+    @Column(name = "fechafinalMembresia")
+    private LocalDate fechafinalMembresia;
 
-    public Membresia() {
+    @Column(name = "estadoMembresia", nullable = false)
+    private Boolean estadoMembresia;
+
+    @ManyToOne
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
+
+    public Membresia() {}
+
+    public Membresia(Boolean estadoMembresia, LocalDate fechafinalMembresia, LocalDate fechainicioMembresia, int idMembresia, Usuario usuario) {
+        this.estadoMembresia = estadoMembresia;
+        this.fechafinalMembresia = fechafinalMembresia;
+        this.fechainicioMembresia = fechainicioMembresia;
+        this.idMembresia = idMembresia;
+        this.usuario = usuario;
     }
 
-    public Membresia(int idMembresia, LocalDate fechaInicioMenbresia, LocalDate fechaFinMenbresia, Boolean activadoMembresia) {
-        this.idMembresia = idMembresia;
-        this.fechaInicioMenbresia = fechaInicioMenbresia;
-        this.fechaFinMenbresia = fechaFinMenbresia;
-        this.activadoMembresia = activadoMembresia;
+    public Boolean getEstadoMembresia() {
+        return estadoMembresia;
+    }
+
+    public void setEstadoMembresia(Boolean estadoMembresia) {
+        this.estadoMembresia = estadoMembresia;
+    }
+
+    public LocalDate getFechafinalMembresia() {
+        return fechafinalMembresia;
+    }
+
+    public void setFechafinalMembresia(LocalDate fechafinalMembresia) {
+        this.fechafinalMembresia = fechafinalMembresia;
+    }
+
+    public LocalDate getFechainicioMembresia() {
+        return fechainicioMembresia;
+    }
+
+    public void setFechainicioMembresia(LocalDate fechainicioMembresia) {
+        this.fechainicioMembresia = fechainicioMembresia;
     }
 
     public int getIdMembresia() {
@@ -38,27 +66,11 @@ public class Membresia {
         this.idMembresia = idMembresia;
     }
 
-    public LocalDate getFechaInicioMenbresia() {
-        return fechaInicioMenbresia;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setFechaInicioMenbresia(LocalDate fechaInicioMenbresia) {
-        this.fechaInicioMenbresia = fechaInicioMenbresia;
-    }
-
-    public LocalDate getFechaFinMenbresia() {
-        return fechaFinMenbresia;
-    }
-
-    public void setFechaFinMenbresia(LocalDate fechaFinMenbresia) {
-        this.fechaFinMenbresia = fechaFinMenbresia;
-    }
-
-    public Boolean getActivadoMembresia() {
-        return activadoMembresia;
-    }
-
-    public void setActivadoMembresia(Boolean activadoMembresia) {
-        this.activadoMembresia = activadoMembresia;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

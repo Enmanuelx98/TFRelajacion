@@ -1,43 +1,39 @@
 package pe.edu.upc.tfcreo.entities;
 
 import jakarta.persistence.*;
-import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
+
 
 @Entity
-@Table(name = "pagos")
+@Table(name = "Pagos")
 public class Pagos {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int idPagos;
 
-    @Column(name = "tipoPagos",length = 50, nullable = false )
-    private String tipoPagos;
-    @Column(name = "numeroFacturaPagos",length = 10)
-    private String numeroFacturaPagos;
+    @Column(name = "tipoPago", nullable = false, length = 50)
+    private String tipoPago;
+
+    @Column(name = "fechaPago", nullable = false)
+    private LocalDate fechaPago;
+
     @Column(name = "montoPagos")
     private double montoPagos;
 
-    @CreationTimestamp
-    @Column(name = "fechaPagos",updatable = false)
-    private LocalDateTime fechaPagos;
-
     @ManyToOne
-    @JoinColumn(name = "idMembresia")
-    private Membresia membresia;
+    @JoinColumn(name = "idusuario")
+    private Usuario usuario;
 
     public Pagos() {
     }
 
-    public Pagos(int idPagos, String tipoPagos, String numeroFacturaPagos, int montoPagos, LocalDateTime fechaPagos, Membresia membresia) {
+    public Pagos(int idPagos, String tipoPago, LocalDate fechaPago, double montoPagos, Usuario usuario) {
         this.idPagos = idPagos;
-        this.tipoPagos = tipoPagos;
-        this.numeroFacturaPagos = numeroFacturaPagos;
+        this.tipoPago = tipoPago;
+        this.fechaPago = fechaPago;
         this.montoPagos = montoPagos;
-        this.fechaPagos = fechaPagos;
-        this.membresia = membresia;
+        this.usuario = usuario;
     }
 
     public int getIdPagos() {
@@ -48,20 +44,20 @@ public class Pagos {
         this.idPagos = idPagos;
     }
 
-    public String getTipoPagos() {
-        return tipoPagos;
+    public String getTipoPago() {
+        return tipoPago;
     }
 
-    public void setTipoPagos(String tipoPagos) {
-        this.tipoPagos = tipoPagos;
+    public void setTipoPago(String tipoPago) {
+        this.tipoPago = tipoPago;
     }
 
-    public String getNumeroFacturaPagos() {
-        return numeroFacturaPagos;
+    public LocalDate getFechaPago() {
+        return fechaPago;
     }
 
-    public void setNumeroFacturaPagos(String numeroFacturaPagos) {
-        this.numeroFacturaPagos = numeroFacturaPagos;
+    public void setFechaPago(LocalDate fechaPago) {
+        this.fechaPago = fechaPago;
     }
 
     public double getMontoPagos() {
@@ -72,19 +68,11 @@ public class Pagos {
         this.montoPagos = montoPagos;
     }
 
-    public LocalDateTime getFechaPagos() {
-        return fechaPagos;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setFechaPagos(LocalDateTime fechaPagos) {
-        this.fechaPagos = fechaPagos;
-    }
-
-    public Membresia getMembresia() {
-        return membresia;
-    }
-
-    public void setMembresia(Membresia membresia) {
-        this.membresia = membresia;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

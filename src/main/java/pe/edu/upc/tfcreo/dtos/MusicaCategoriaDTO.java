@@ -1,11 +1,10 @@
 package pe.edu.upc.tfcreo.dtos;
 
+
 public class MusicaCategoriaDTO {
 
     private int idMusicaCategoria;
-
-    private String nombreMusicaCategoria;
-
+    private String nombreCategoria;
 
     public int getIdMusicaCategoria() {
         return idMusicaCategoria;
@@ -15,11 +14,11 @@ public class MusicaCategoriaDTO {
         this.idMusicaCategoria = idMusicaCategoria;
     }
 
-    public String getNombreMusicaCategoria() {
-        return nombreMusicaCategoria;
+    public String getNombreCategoria() {
+        return nombreCategoria;
     }
 
-    public void setNombreMusicaCategoria(String nombreMusicaCategoria) {
-        this.nombreMusicaCategoria = nombreMusicaCategoria;
+    public void setNombreCategoria(String nombreCategoria) {
+        this.nombreCategoria = nombreCategoria;
     }
 }
