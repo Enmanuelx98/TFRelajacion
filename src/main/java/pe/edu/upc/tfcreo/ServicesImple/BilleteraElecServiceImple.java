@@ -31,4 +31,9 @@ public class BilleteraElecServiceImple implements BilleteraElecServiceInterface 
     public List<BilleteraElectronica> listarBilleteraElec() {
         return BilleteraElecRepository.findAll();
     }
+
+    @Override
+    public double montototabilleteraen3meses() {
+        return BilleteraElecRepository.montototabilleteraen3meses();
+    }
 }

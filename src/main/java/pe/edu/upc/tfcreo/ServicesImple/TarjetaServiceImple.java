@@ -30,4 +30,9 @@ public class TarjetaServiceImple implements TarjetaServiceInterface {
     public List<Tarjeta> listarTarjeta() {
         return tarjetaRepository.findAll();
     }
+
+    @Override
+    public double montototatarjetaen3meses() {
+        return tarjetaRepository.montototatarjetaen3meses();
+    }
 }

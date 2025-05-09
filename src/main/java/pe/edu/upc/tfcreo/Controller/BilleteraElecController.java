@@ -52,4 +52,11 @@ public class BilleteraElecController {
             return m.map(x, BilleteraElectronicaDTO.class);
         }).collect(Collectors.toList());
     }
+
+    // Nuevo metodo para devolver el monto total pagado por billetera en los últimos 3 meses
+    @GetMapping("/montototalbilleterafecha")
+    public Double obtenerMontoTotalBilleteraEn3Meses() {
+        return billeteraElecService.montototabilleteraen3meses();
+    }
+
 }
