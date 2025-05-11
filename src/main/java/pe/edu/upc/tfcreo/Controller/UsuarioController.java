@@ -37,7 +37,7 @@ public class UsuarioController {
 
         Users usuarioRol=usuarioService.buscarUsuariobyusername(users.getUsername());
         Role roleAsignado= new Role();
-        roleAsignado.setRol("ROLE_JOVENESPROFESIONALES");
+        roleAsignado.setRol("JOVENESPROFESIONALES");
         roleAsignado.setUser(usuarioRol);
         rolSerive.insertarRol(roleAsignado);
 
