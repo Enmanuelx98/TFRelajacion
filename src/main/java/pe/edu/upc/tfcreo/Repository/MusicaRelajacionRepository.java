@@ -19,6 +19,6 @@ public interface MusicaRelajacionRepository extends JpaRepository<MusicaRelajaci
             "WHERE r.playlist IS NOT NULL " +
             "GROUP BY c.nombreCategoria " +
             "ORDER BY COUNT(r) DESC")
-    List<CategoriaMasUsadaDTO> top5CategoriasMasUsadas(Pageable pageable);
+    public List<CategoriaMasUsadaDTO> top5CategoriasMasUsadas(Pageable pageable);
 
 }

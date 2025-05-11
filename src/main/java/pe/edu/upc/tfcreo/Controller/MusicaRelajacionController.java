@@ -54,7 +54,7 @@ public class MusicaRelajacionController {
     }
 
     @GetMapping("/top-categorias")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyRole('ADMIN','JOVENESPROFESIONALES')")
     public List<CategoriaMasUsadaDTO> obtenerTopCategorias() {
         return musicaRelajacionservice.obtenerTop5CategoriasMasUsadas();
     }

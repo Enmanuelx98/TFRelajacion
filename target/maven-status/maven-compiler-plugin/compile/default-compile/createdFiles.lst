@@ -115,6 +115,7 @@ pe\edu\upc\tfcreo\ServicesImple\VideosTecRespiracionImple.class
 pe\edu\upc\tfcreo\Repository\TecMeditacionRepository.class
 pe\edu\upc\tfcreo\ServicesImple\MembresiaServiceImple.class
 pe\edu\upc\tfcreo\ServicesImple\TerapiaServiceImple.class
+pe\edu\upc\tfcreo\Dtos\CategoriaMasUsadaDTO.class
 pe\edu\upc\tfcreo\Entity\ProgresomusicaS.class
 pe\edu\upc\tfcreo\ServicesInterface\MembresiaServiceInterface.class
 pe\edu\upc\tfcreo\Dtos\CantidadTecnicaMeditacionPorTipoTerapiaDTO.class

@@ -9,7 +9,6 @@ public interface MusicaRelajacionInterface {
     public void updateMusicaRelax(MusicaRelajacion musicarelajacion);
     public void eliminarMusicaRelax(int id);
     public List<MusicaRelajacion> listarMusicaRelax();
-
-    List<CategoriaMasUsadaDTO> obtenerTop5CategoriasMasUsadas();
+    public List<CategoriaMasUsadaDTO> obtenerTop5CategoriasMasUsadas();
 
 }
