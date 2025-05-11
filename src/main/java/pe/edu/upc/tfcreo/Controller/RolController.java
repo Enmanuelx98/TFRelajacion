@@ -19,6 +19,7 @@ public class RolController {
     private RolSeriveInterface rolSerive;
 
     //insertar
+    @PostMapping
     @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody RoleDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
