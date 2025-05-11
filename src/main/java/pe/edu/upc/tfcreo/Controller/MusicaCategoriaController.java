@@ -18,7 +18,7 @@ public class MusicaCategoriaController {
     private MusicaCategoriaInterface musicaCategoriaservice;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody MusicaCategoriaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MusicaCategoria musicacategoria = modelMapper.map(dto, MusicaCategoria.class);
@@ -27,7 +27,7 @@ public class MusicaCategoriaController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody MusicaCategoriaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MusicaCategoria musicacategoria = modelMapper.map(dto, MusicaCategoria.class);
@@ -37,14 +37,14 @@ public class MusicaCategoriaController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         musicaCategoriaservice.eliminarMusicaCategoria(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MusicaCategoriaDTO> List() {
         return musicaCategoriaservice.listarMusicaCategoria().stream().map(x -> {
             ModelMapper m = new ModelMapper();

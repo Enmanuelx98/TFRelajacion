@@ -6,7 +6,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.VideosTecnicasRespiracionDTO;
 import pe.edu.upc.tfcreo.Entity.VideosTecnicasRespiracion;
-import pe.edu.upc.tfcreo.ServicesImple.VideosTecRespiracionImple;
 import pe.edu.upc.tfcreo.ServicesInterface.VideosTecRespiracionInterface;
 
 import java.util.List;
@@ -21,7 +20,7 @@ public class VideosTecRespiracionController {
 
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody VideosTecnicasRespiracionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         VideosTecnicasRespiracion videostecnicasrespiracion = modelMapper.map(dto, VideosTecnicasRespiracion.class);
@@ -30,7 +29,7 @@ public class VideosTecRespiracionController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody VideosTecnicasRespiracionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         VideosTecnicasRespiracion videostecnicasrespiracion = modelMapper.map(dto, VideosTecnicasRespiracion.class);
@@ -40,14 +39,14 @@ public class VideosTecRespiracionController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         videosTecRespiracionservice.eliminarVideosTecRespiracion(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<VideosTecnicasRespiracionDTO> List() {
         return videosTecRespiracionservice.listarVideosTecRespiracion().stream().map(x -> {
             ModelMapper m = new ModelMapper();

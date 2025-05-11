@@ -5,9 +5,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.SesionTerapiaDTO;
+import pe.edu.upc.tfcreo.Dtos.TerapiamoresesionHU;
+import pe.edu.upc.tfcreo.Dtos.UsermoresesionHU;
 import pe.edu.upc.tfcreo.Entity.SesionTerapia;
 import pe.edu.upc.tfcreo.ServicesInterface.SesionTerapiaInterface;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -19,7 +22,7 @@ public class SesionTerapiaController {
     private SesionTerapiaInterface sesionTerapiaInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void insertar(@RequestBody SesionTerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         SesionTerapia sesion = modelMapper.map(dto, SesionTerapia.class);
@@ -28,7 +31,7 @@ public class SesionTerapiaController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public void editar(@RequestBody SesionTerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         SesionTerapia sesion = modelMapper.map(dto, SesionTerapia.class);
@@ -38,14 +41,14 @@ public class SesionTerapiaController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void eliminar(@PathVariable("id") int id) {
         sesionTerapiaInterface.eliminarSesionTerapia(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<SesionTerapiaDTO> List() {
         return sesionTerapiaInterface.listarSesionTerapia().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -55,7 +58,7 @@ public class SesionTerapiaController {
 
     //listarsesiones por usuario
     @GetMapping("/sesionUsuario/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<SesionTerapiaDTO> ListsesionUsuario(@PathVariable("id") int id) {
         return sesionTerapiaInterface.quantitySesionesbyUsuario(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -64,13 +67,42 @@ public class SesionTerapiaController {
     }
     //listarsesiones completadas del usuario
     @GetMapping("/sesionCompletoUsuario/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<SesionTerapiaDTO> ListsesionCompletoUsuario(@PathVariable("id") int id) {
         return sesionTerapiaInterface.quantitySesionesCompletobyUsuario(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, SesionTerapiaDTO.class);
         }).collect(Collectors.toList());
     }
+    //usuario con mas sesiones
+    @GetMapping("/usuariomoresesiones")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<UsermoresesionHU> Usuariomoresesiones() {
+        List<UsermoresesionHU> dtoLista = new ArrayList<>();
+        List<String[]> fila=sesionTerapiaInterface.usermoresesiones();
+        for(String[]columna:fila){
+            UsermoresesionHU dto = new UsermoresesionHU();
+            dto.setIduser(Integer.parseInt(columna[0]));
+            dto.setNombreusername(columna[1]);
+            dto.setQuantitysesion(Integer.parseInt(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 
-
+    //terapia con mas sesiones
+    @GetMapping("/terapiamoreused")
+    @PreAuthorize("hasAuthority('ADMIN')")
+    public List<TerapiamoresesionHU> Terapiamoreused() {
+        List<TerapiamoresesionHU> dtoLista = new ArrayList<>();
+        List<String[]> fila=sesionTerapiaInterface.terapiamoresesesions();
+        for(String[]columna:fila){
+            TerapiamoresesionHU dto = new TerapiamoresesionHU();
+            dto.setIdterapia(Integer.parseInt(columna[0]));
+            dto.setNameterapia(columna[1]);
+            dto.setQuantitysesion(Integer.parseInt(columna[2]));
+            dtoLista.add(dto);
+        }
+        return dtoLista;
+    }
 }

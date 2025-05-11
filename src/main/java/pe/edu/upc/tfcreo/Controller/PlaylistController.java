@@ -19,7 +19,7 @@ public class PlaylistController {
     private PlaylistServiceInterface playlistServiceinter;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody PlaylistDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Playlist playlist = modelMapper.map(dto, Playlist.class);
@@ -28,7 +28,7 @@ public class PlaylistController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody PlaylistDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Playlist playlist = modelMapper.map(dto, Playlist.class);
@@ -38,14 +38,14 @@ public class PlaylistController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         playlistServiceinter.eliminarPlaylist(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<PlaylistDTO> List() {
         return playlistServiceinter.listarPlaylist().stream().map(x -> {
             ModelMapper m = new ModelMapper();

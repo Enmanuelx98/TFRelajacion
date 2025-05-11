@@ -20,7 +20,7 @@ public class TerapiaController {
     private TerapiaServiceInterface terapiaService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
@@ -29,7 +29,7 @@ public class TerapiaController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody TerapiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Terapia terapia = modelMapper.map(dto, Terapia.class);
@@ -39,14 +39,14 @@ public class TerapiaController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         terapiaService.eliminarTerapia(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<TerapiaDTO> List() {
         return terapiaService.listarTerapia().stream().map(x -> {
             ModelMapper m = new ModelMapper();

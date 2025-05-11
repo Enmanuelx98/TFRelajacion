@@ -20,7 +20,7 @@ public class ProgresovideosTRController {
     private ProgresovideosTRInterface progresovideosTRInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void insertar(@RequestBody ProgresovideosTRDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresovideosTR progresovideosTR = modelMapper.map(dto, ProgresovideosTR.class);
@@ -29,7 +29,7 @@ public class ProgresovideosTRController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody ProgresovideosTRDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresovideosTR progresovideosTR = modelMapper.map(dto, ProgresovideosTR.class);
@@ -39,14 +39,14 @@ public class ProgresovideosTRController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         progresovideosTRInterface.eliminarProgresoVideosTR(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ProgresovideosTRDTO> List() {
         return progresovideosTRInterface.listarProgresoVideosTR().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -56,18 +56,17 @@ public class ProgresovideosTRController {
 
     //Porcentaje de progreso
     @GetMapping("/progreso/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public PorcentajeDTO obtenerProgresoDTO(@PathVariable int id) {
         double porcentaje = progresovideosTRInterface.calcularPorcentajeProgreso(id);
 
         PorcentajeDTO porcentajeDTO = new PorcentajeDTO(id, porcentaje);
-
         return porcentajeDTO;
     }
 
     //Lista de videos completados
     @GetMapping("/videocompleto/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<ProgresovideosTRDTO> ListVideoCompleto(@PathVariable int id) {
         return progresovideosTRInterface.quantityVideosCompletadosBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

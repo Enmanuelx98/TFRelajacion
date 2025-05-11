@@ -19,7 +19,7 @@ public class TipoMaterialController {
     private TipoMaterialServiceInterface tipoMaterialService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody TipoMaterialDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TipoMaterial tipoMaterial = modelMapper.map(dto, TipoMaterial.class);
@@ -28,7 +28,7 @@ public class TipoMaterialController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody TipoMaterialDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         TipoMaterial tipoMaterial = modelMapper.map(dto, TipoMaterial.class);
@@ -38,14 +38,14 @@ public class TipoMaterialController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         tipoMaterialService.eliminarTipoMaterial(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<TipoMaterialDTO> List() {
         return tipoMaterialService.listarTipoMaterial().stream().map(x -> {
             ModelMapper m = new ModelMapper();

@@ -6,6 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.UsersDTO;
+import pe.edu.upc.tfcreo.Dtos.UsuarionopassDTO;
 import pe.edu.upc.tfcreo.Entity.Role;
 import pe.edu.upc.tfcreo.Entity.Users;
 import pe.edu.upc.tfcreo.ServicesInterface.RolSeriveInterface;
@@ -36,7 +37,7 @@ public class UsuarioController {
 
         Users usuarioRol=usuarioService.buscarUsuariobyusername(users.getUsername());
         Role roleAsignado= new Role();
-        roleAsignado.setRol("ROLE_CLIENTE");
+        roleAsignado.setRol("ROLE_JOVENESPROFESIONALES");
         roleAsignado.setUser(usuarioRol);
         rolSerive.insertarRol(roleAsignado);
 
@@ -44,7 +45,7 @@ public class UsuarioController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody UsersDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Users users = modelMapper.map(dto, Users.class);
@@ -54,18 +55,18 @@ public class UsuarioController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         usuarioService.eliminarUsuario(id);
     }
 
     //listar
     @GetMapping(produces = "application/json")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
-    public List<UsersDTO> List() {
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
+    public List<UsuarionopassDTO> List() {
         return usuarioService.listarUsuario().stream().map(x -> {
             ModelMapper m = new ModelMapper();
-            return m.map(x, UsersDTO.class);
+            return m.map(x, UsuarionopassDTO.class);
         }).collect(Collectors.toList());
     }
 }
