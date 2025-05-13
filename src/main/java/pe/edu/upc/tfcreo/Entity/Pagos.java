@@ -1,6 +1,7 @@
 package pe.edu.upc.tfcreo.Entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.userdetails.User;
 
 
 import java.time.LocalDate;
@@ -24,17 +25,17 @@ public class Pagos {
 
     @ManyToOne
     @JoinColumn(name = "idusuario")
-    private Usuario usuario;
+    private Users users;
 
     public Pagos() {
     }
 
-    public Pagos(int idPagos, String tipoPago, LocalDate fechaPago, double montoPagos, Usuario usuario) {
+    public Pagos(int idPagos, String tipoPago, LocalDate fechaPago, double montoPagos, Users usuario) {
         this.idPagos = idPagos;
         this.tipoPago = tipoPago;
         this.fechaPago = fechaPago;
         this.montoPagos = montoPagos;
-        this.usuario = usuario;
+        this.users = usuario;
     }
 
     public int getIdPagos() {
@@ -69,11 +70,11 @@ public class Pagos {
         this.montoPagos = montoPagos;
     }
 
-    public Usuario getUsuario() {
-        return usuario;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setUsuario(Usuario usuario) {
-        this.usuario = usuario;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 }

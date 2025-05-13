@@ -17,5 +17,4 @@ public interface TarjetaRepository extends JpaRepository<Tarjeta, Integer> {
             " WHERE \n" +
             " p.fecha_pago BETWEEN '2025-03-02' AND '2025-05-05';",nativeQuery = true)
     double montototatarjetaen3meses();
-
 }
