@@ -6,7 +6,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.PorcentajeDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresomusicaSDTO;
-import pe.edu.upc.tfcreo.Dtos.ProgresovideosTRDTO;
 import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
 import pe.edu.upc.tfcreo.ServicesInterface.ProgresomusicaSInterface;
 
@@ -21,7 +20,7 @@ public class ProgresomusicaSController {
     private ProgresomusicaSInterface progresomusicaSInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void insertar(@RequestBody ProgresomusicaSDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresomusicaS progresomusicaS = modelMapper.map(dto, ProgresomusicaS.class);
@@ -30,7 +29,7 @@ public class ProgresomusicaSController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody ProgresomusicaSDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresomusicaS progresomusicaS = modelMapper.map(dto, ProgresomusicaS.class);
@@ -40,14 +39,14 @@ public class ProgresomusicaSController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         progresomusicaSInterface.eliminarProgresoMusica(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ProgresomusicaSDTO> List() {
         return progresomusicaSInterface.listarProgresoMusica().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -57,7 +56,7 @@ public class ProgresomusicaSController {
 
     //Porcentaje de progreso
     @GetMapping("/progreso/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public PorcentajeDTO obtenerProgresoMusicaDTO(@PathVariable int id) {
         double porcentaje = progresomusicaSInterface.calcularPorcentajeProgreso(id);
 
@@ -68,7 +67,7 @@ public class ProgresomusicaSController {
 
     //Lista de musica completados
     @GetMapping("/musicacompleta/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<ProgresomusicaSDTO> ListMusicaCompleto(@PathVariable int id) {
         return progresomusicaSInterface.quantityMusicaCompletoBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

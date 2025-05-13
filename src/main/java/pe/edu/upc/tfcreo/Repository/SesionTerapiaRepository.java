@@ -21,4 +21,22 @@ public interface SesionTerapiaRepository extends JpaRepository<SesionTerapia, In
             "from SesionTerapia se\n" +
             "where se.idusuario = :u2 and se.completado = true",nativeQuery=true)
     public List<SesionTerapia> quantitySesionesCompletobyUsuario(@Param("u2") int u2);
+
+    //El usuario que mas sesiones ha recibido
+    @Query(value="select u.id, u.username, count(s.id_Sesion) as total_sesiones\n" +
+            "from users u\n" +
+            "join Sesionterapia s on u.id = s.idusuario\n" +
+            "group BY u.id, u.username\n" +
+            "order by total_sesiones desc\n" +
+            "limit 1;",nativeQuery=true)
+    public List<String[]> usermoresesiones();
+
+    //La tecnica de relajacion mas usada
+    @Query(value="select t.id_Terapia, t.tipo_Terapia, count(s.id_Sesion) as total_sesiones\n" +
+            "from Sesionterapia s\n" +
+            "join Terapia t on s.idterapia = t.id_Terapia\n" +
+            "group by t.id_Terapia, t.tipo_Terapia\n" +
+            "order by total_sesiones desc\n" +
+            " limit 1;",nativeQuery=true)
+    public List<String[]> terapiamoresesesions();
 }

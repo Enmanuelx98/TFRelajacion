@@ -2,6 +2,7 @@ pe\edu\upc\tfcreo\ServicesImple\MusicaCategoriaImple.class
 pe\edu\upc\tfcreo\Config\SwaggerConfig.class
 pe\edu\upc\tfcreo\Controller\TarjetaController.class
 pe\edu\upc\tfcreo\Repository\SesionTerapiaRepository.class
+pe\edu\upc\tfcreo\Dtos\UsuarionopassDTO.class
 pe\edu\upc\tfcreo\Repository\MembresiaRepository.class
 pe\edu\upc\tfcreo\Entity\VideosTecnicasRespiracion.class
 pe\edu\upc\tfcreo\ServicesImple\ProgresoMaterialMediImple.class
@@ -22,6 +23,7 @@ pe\edu\upc\tfcreo\Entity\Pagos.class
 pe\edu\upc\tfcreo\Repository\PagosRepository.class
 pe\edu\upc\tfcreo\Dtos\TecnicaMeditacionPorTipoTerapiaDTO.class
 pe\edu\upc\tfcreo\Entity\MusicaCategoria.class
+pe\edu\upc\tfcreo\Dtos\TerapiamoresesionHU.class
 pe\edu\upc\tfcreo\ServicesInterface\SesionTerapiaInterface.class
 pe\edu\upc\tfcreo\Controller\PagosController.class
 pe\edu\upc\tfcreo\Dtos\MaterialMeditacionDTO.class
@@ -38,6 +40,7 @@ pe\edu\upc\tfcreo\Dtos\MusicaRelajacionDTO.class
 pe\edu\upc\tfcreo\ServicesInterface\BilleteraElecServiceInterface.class
 pe\edu\upc\tfcreo\ServicesImple\TipoMaterialServiceImple.class
 pe\edu\upc\tfcreo\securities\JwtTokenUtil.class
+pe\edu\upc\tfcreo\Dtos\UsermoresesionHU.class
 pe\edu\upc\tfcreo\ServicesInterface\PagosServiceInterface.class
 pe\edu\upc\tfcreo\Dtos\TerapiaDTO.class
 pe\edu\upc\tfcreo\Entity\Tarjeta.class
@@ -112,6 +115,7 @@ pe\edu\upc\tfcreo\ServicesImple\VideosTecRespiracionImple.class
 pe\edu\upc\tfcreo\Repository\TecMeditacionRepository.class
 pe\edu\upc\tfcreo\ServicesImple\MembresiaServiceImple.class
 pe\edu\upc\tfcreo\ServicesImple\TerapiaServiceImple.class
+pe\edu\upc\tfcreo\Dtos\CategoriaMasUsadaDTO.class
 pe\edu\upc\tfcreo\Entity\ProgresomusicaS.class
 pe\edu\upc\tfcreo\ServicesInterface\MembresiaServiceInterface.class
 pe\edu\upc\tfcreo\Dtos\CantidadTecnicaMeditacionPorTipoTerapiaDTO.class

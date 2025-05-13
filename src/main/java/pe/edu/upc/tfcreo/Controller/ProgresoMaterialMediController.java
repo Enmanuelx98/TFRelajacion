@@ -6,9 +6,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import pe.edu.upc.tfcreo.Dtos.PorcentajeDTO;
 import pe.edu.upc.tfcreo.Dtos.ProgresoMaterialMediDTO;
-import pe.edu.upc.tfcreo.Dtos.ProgresomusicaSDTO;
 import pe.edu.upc.tfcreo.Entity.ProgresoMaterialMedi;
-import pe.edu.upc.tfcreo.Entity.ProgresomusicaS;
 import pe.edu.upc.tfcreo.ServicesInterface.ProgresoMaterialMediInterface;
 
 import java.util.List;
@@ -21,7 +19,7 @@ public class ProgresoMaterialMediController {
     private ProgresoMaterialMediInterface progresoMaterialMediInterface;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void insertar(@RequestBody ProgresoMaterialMediDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresoMaterialMedi progresomaterialMedi = modelMapper.map(dto, ProgresoMaterialMedi.class);
@@ -30,7 +28,7 @@ public class ProgresoMaterialMediController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void editar(@RequestBody ProgresoMaterialMediDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         ProgresoMaterialMedi progresomaterialMedi = modelMapper.map(dto, ProgresoMaterialMedi.class);
@@ -40,14 +38,14 @@ public class ProgresoMaterialMediController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         progresoMaterialMediInterface.eliminarProgresoMaterialMedi(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<ProgresoMaterialMediDTO> List() {
         return progresoMaterialMediInterface.listarProgresoMaterialMedi().stream().map(x -> {
             ModelMapper m = new ModelMapper();
@@ -57,7 +55,7 @@ public class ProgresoMaterialMediController {
 
     //Porcentaje de progreso
     @GetMapping("/progreso/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public PorcentajeDTO obtenerProgresoMaterialDTO(@PathVariable int id) {
         double porcentaje = progresoMaterialMediInterface.calcularPorcentajeProgreso(id);
 
@@ -68,7 +66,7 @@ public class ProgresoMaterialMediController {
 
     //Lista de materiales completados
     @GetMapping("/materialcompleta/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<ProgresoMaterialMediDTO> ListMusicaCompleto(@PathVariable int id) {
         return progresoMaterialMediInterface.quantityMaterialCompletadosBySesion(id).stream().map(x -> {
             ModelMapper m = new ModelMapper();

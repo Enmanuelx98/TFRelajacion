@@ -19,7 +19,7 @@ public class BilleteraElecController {
     private BilleteraElecServiceInterface billeteraElecService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public void insertar(@RequestBody BilleteraElectronicaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         BilleteraElectronica billetera = modelMapper.map(dto, BilleteraElectronica.class);
@@ -28,7 +28,7 @@ public class BilleteraElecController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody BilleteraElectronicaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         BilleteraElectronica billetera = modelMapper.map(dto, BilleteraElectronica.class);
@@ -38,14 +38,14 @@ public class BilleteraElecController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         billeteraElecService.eliminarBilleteraElec(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<BilleteraElectronicaDTO> List() {
         return billeteraElecService.listarBilleteraElec().stream().map(x -> {
             ModelMapper m = new ModelMapper();

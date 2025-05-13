@@ -4,6 +4,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
+import pe.edu.upc.tfcreo.Dtos.CategoriaMasUsadaDTO;
 import pe.edu.upc.tfcreo.Dtos.MusicaRelajacionDTO;
 import pe.edu.upc.tfcreo.Entity.MusicaRelajacion;
 import pe.edu.upc.tfcreo.ServicesInterface.MusicaRelajacionInterface;
@@ -18,7 +19,7 @@ public class MusicaRelajacionController {
     @Autowired
     private MusicaRelajacionInterface musicaRelajacionservice;
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody MusicaRelajacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MusicaRelajacion musicarelajacion = modelMapper.map(dto, MusicaRelajacion.class);
@@ -27,7 +28,7 @@ public class MusicaRelajacionController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody MusicaRelajacionDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         MusicaRelajacion musicarelajacion = modelMapper.map(dto, MusicaRelajacion.class);
@@ -37,18 +38,27 @@ public class MusicaRelajacionController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         musicaRelajacionservice.eliminarMusicaRelax(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAnyAuthority('ADMIN','JOVENESPROFESIONALES')")
     public List<MusicaRelajacionDTO> List() {
         return musicaRelajacionservice.listarMusicaRelax().stream().map(x -> {
             ModelMapper m = new ModelMapper();
             return m.map(x, MusicaRelajacionDTO.class);
         }).collect(Collectors.toList());
     }
+
+    @GetMapping("/top-categorias")
+    @PreAuthorize("hasAnyRole('ADMIN','JOVENESPROFESIONALES')")
+    public List<CategoriaMasUsadaDTO> obtenerTopCategorias() {
+        return musicaRelajacionservice.obtenerTop5CategoriasMasUsadas();
+    }
+
+
 }
+

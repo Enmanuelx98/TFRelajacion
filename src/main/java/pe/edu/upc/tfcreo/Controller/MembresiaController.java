@@ -19,7 +19,7 @@ public class MembresiaController {
     private MembresiaServiceInterface membresiaService;
     //insertar
     @PostMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void insertar(@RequestBody MembresiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Membresia membresia = modelMapper.map(dto, Membresia.class);
@@ -28,7 +28,7 @@ public class MembresiaController {
 
     //modificar
     @PutMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void editar(@RequestBody MembresiaDTO dto) {
         ModelMapper modelMapper = new ModelMapper();
         Membresia membresia = modelMapper.map(dto, Membresia.class);
@@ -38,14 +38,14 @@ public class MembresiaController {
 
     //delete
     @DeleteMapping("/{id}")
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public void eliminar(@PathVariable("id") int id) {
         membresiaService.eliminarMembresia(id);
     }
 
     //listar
     @GetMapping
-    @PreAuthorize("hasAnyRole('ADMIN','CLIENTE')")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MembresiaDTO> List() {
         return membresiaService.listarMembresia().stream().map(x -> {
             ModelMapper m = new ModelMapper();
