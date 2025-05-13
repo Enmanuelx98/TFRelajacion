@@ -55,6 +55,7 @@ public class BilleteraElecController {
 
     // Nuevo metodo para devolver el monto total pagado por billetera en los últimos 3 meses
     @GetMapping("/montototalbilleterafecha")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Double obtenerMontoTotalBilleteraEn3Meses() {
         return billeteraElecService.montototabilleteraen3meses();
     }

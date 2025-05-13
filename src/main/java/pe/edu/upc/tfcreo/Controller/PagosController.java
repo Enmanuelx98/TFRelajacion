@@ -56,7 +56,7 @@ public class PagosController {
     }
 
     @GetMapping("/montototalen3meses")
-
+    @PreAuthorize("hasAuthority('ADMIN')")
     public List<MontoTotalen3MesesDTO> montoTotalen3Meses() {
         List<MontoTotalen3MesesDTO> dtoLista=new ArrayList<>();
         List<String[]>fila=pagosService.Montototalen3meses();

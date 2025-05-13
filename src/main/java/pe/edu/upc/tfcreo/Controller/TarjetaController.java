@@ -54,6 +54,7 @@ public class TarjetaController {
     }
 
     @GetMapping("/montototaltarjetaenfechadeterminada")
+    @PreAuthorize("hasAuthority('ADMIN')")
     public Double obtenerMontoTotalTarjetaEn3Meses() {
         return tarjetaService.montototatarjetaen3meses();
     }
