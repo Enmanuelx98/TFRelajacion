@@ -32,9 +32,4 @@ public class PagosServiceImple implements PagosServiceInterface {
     public List<Pagos> listarPagos() {
         return pagosRepository.findAll();
     }
-
-    @Override
-    public List<String[]> Montototalen3meses() {
-        return pagosRepository.montototalen3meses();
-    }
 }

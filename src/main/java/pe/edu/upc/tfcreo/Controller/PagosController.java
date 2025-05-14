@@ -4,12 +4,10 @@ import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
-import pe.edu.upc.tfcreo.Dtos.MontoTotalen3MesesDTO;
 import pe.edu.upc.tfcreo.Dtos.PagosDTO;
 import pe.edu.upc.tfcreo.Entity.Pagos;
 import pe.edu.upc.tfcreo.ServicesInterface.PagosServiceInterface;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -54,19 +52,4 @@ public class PagosController {
             return m.map(x, PagosDTO.class);
         }).collect(Collectors.toList());
     }
-
-    @GetMapping("/montototalen3meses")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public List<MontoTotalen3MesesDTO> montoTotalen3Meses() {
-        List<MontoTotalen3MesesDTO> dtoLista=new ArrayList<>();
-        List<String[]>fila=pagosService.Montototalen3meses();
-        for(String[]columna:fila) {
-            MontoTotalen3MesesDTO dto=new MontoTotalen3MesesDTO();
-            dto.setCantidadTotalPagos3Meses(Integer.parseInt(columna[0]));
-            dto.setMontoTotalPagos3Meses(Double.parseDouble(columna[1]));
-            dtoLista.add(dto);
-        }
-        return dtoLista;
-    }
-
 }

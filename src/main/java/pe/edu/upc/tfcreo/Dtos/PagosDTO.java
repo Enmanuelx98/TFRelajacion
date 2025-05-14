@@ -1,31 +1,23 @@
 package pe.edu.upc.tfcreo.Dtos;
 
 
-import jakarta.persistence.*;
 import pe.edu.upc.tfcreo.Entity.Users;
-
 
 import java.time.LocalDate;
 
 
 public class PagosDTO {
-
     private int idPagos;
-
     private String tipoPago;
-
     private LocalDate fechaPago;
-
-    private double montoPagos;
-
     private Users users;
 
-    public int getIdPagos() {
-        return idPagos;
+    public Users getUsuario() {
+        return users;
     }
 
-    public void setIdPagos(int idPagos) {
-        this.idPagos = idPagos;
+    public void setUsuario(Users users) {
+        this.users = users;
     }
 
     public String getTipoPago() {
@@ -36,27 +28,19 @@ public class PagosDTO {
         this.tipoPago = tipoPago;
     }
 
+    public int getIdPagos() {
+        return idPagos;
+    }
+
+    public void setIdPagos(int idPagos) {
+        this.idPagos = idPagos;
+    }
+
     public LocalDate getFechaPago() {
         return fechaPago;
     }
 
     public void setFechaPago(LocalDate fechaPago) {
         this.fechaPago = fechaPago;
-    }
-
-    public double getMontoPagos() {
-        return montoPagos;
-    }
-
-    public void setMontoPagos(double montoPagos) {
-        this.montoPagos = montoPagos;
-    }
-
-    public Users getUsuario() {
-        return users;
-    }
-
-    public void setUsuario(Users users) {
-        this.users = users;
     }
 }

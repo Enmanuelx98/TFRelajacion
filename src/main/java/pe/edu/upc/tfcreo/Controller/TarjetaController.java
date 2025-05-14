@@ -52,14 +52,4 @@ public class TarjetaController {
             return m.map(x, TarjetaDTO.class);
         }).collect(Collectors.toList());
     }
-
-    @GetMapping("/montototaltarjetaenfechadeterminada")
-    @PreAuthorize("hasAuthority('ADMIN')")
-    public Double obtenerMontoTotalTarjetaEn3Meses() {
-        return tarjetaService.montototatarjetaen3meses();
-    }
-
-
-
-
 }

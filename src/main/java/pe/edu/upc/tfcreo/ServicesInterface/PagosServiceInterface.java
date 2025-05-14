@@ -9,6 +9,4 @@ public interface PagosServiceInterface {
     public void updatePagos(Pagos pagos);
     public void eliminarPagos(int id);
     public List<Pagos > listarPagos();
-
-    public List<String[]>Montototalen3meses();
 }
