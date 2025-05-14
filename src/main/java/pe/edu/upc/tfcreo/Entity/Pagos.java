@@ -1,6 +1,7 @@
 package pe.edu.upc.tfcreo.Entity;
 
 import jakarta.persistence.*;
+import org.springframework.security.core.userdetails.User;
 
 
 import java.time.LocalDate;
@@ -19,25 +20,22 @@ public class Pagos {
     @Column(name = "fechaPago", nullable = false)
     private LocalDate fechaPago;
 
+    @Column(name = "montoPagos")
+    private double montoPagos;
+
     @ManyToOne
     @JoinColumn(name = "idusuario")
     private Users users;
 
-    public Pagos() {}
+    public Pagos() {
+    }
 
-    public Pagos(LocalDate fechaPago, int idPagos, String tipoPago, Users users) {
-        this.fechaPago = fechaPago;
+    public Pagos(int idPagos, String tipoPago, LocalDate fechaPago, double montoPagos, Users usuario) {
         this.idPagos = idPagos;
         this.tipoPago = tipoPago;
-        this.users = users;
-    }
-
-    public LocalDate getFechaPago() {
-        return fechaPago;
-    }
-
-    public void setFechaPago(LocalDate fechaPago) {
         this.fechaPago = fechaPago;
+        this.montoPagos = montoPagos;
+        this.users = usuario;
     }
 
     public int getIdPagos() {
@@ -54,6 +52,22 @@ public class Pagos {
 
     public void setTipoPago(String tipoPago) {
         this.tipoPago = tipoPago;
+    }
+
+    public LocalDate getFechaPago() {
+        return fechaPago;
+    }
+
+    public void setFechaPago(LocalDate fechaPago) {
+        this.fechaPago = fechaPago;
+    }
+
+    public double getMontoPagos() {
+        return montoPagos;
+    }
+
+    public void setMontoPagos(double montoPagos) {
+        this.montoPagos = montoPagos;
     }
 
     public Users getUsuario() {

@@ -9,4 +9,6 @@ public interface TarjetaServiceInterface {
     public void updateTarjeta(Tarjeta tarjeta);
     public void eliminarTarjeta(int id);
     public List<Tarjeta> listarTarjeta();
+
+    public double montototatarjetaen3meses();
 }
